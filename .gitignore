@@ -1,0 +1,26 @@
+.firebase/
+.idea/
+.vscode/
+assets/
+bin/
+build/
+includes/
+node_modules/
+packages/
+plugin-assets/
+third-party/
+vendor/
+.DS_Store
+phpcs.xml
+public/stories/*
+public/sitemap.xml
+public/css
+public/docs
+public/fonts
+public/img
+public/video
+public/index.html
+micro-site/.cache
+
+# Stories with custom modifications
+!public/stories/a-day-in-the-life-of-dap-the-contract

@@ -1,0 +1,36 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - Dependencies
+
+  - package-ecosystem: npm
+    directory: '/micro-site'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - Dependencies
+      - JavaScript
+
+  - package-ecosystem: npm
+    directory: '/sitemap-generator'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - Dependencies
+      - JavaScript
+
+  - package-ecosystem: npm
+    directory: '/web-stories-scraper'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - Dependencies
+      - JavaScript
