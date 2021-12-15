@@ -24,7 +24,7 @@
     "lru-cache": "^6.0.0",
     "purge-from-html": "^1.0.3",
     "purgecss": "^4.0.3",
-    "sharp": "^0.29.1",
+    "sharp": "^0.29.3",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
