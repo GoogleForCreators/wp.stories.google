@@ -828,12 +828,12 @@ footer .social_links.links li:after {
   width: 40px;
 }
 
-.web_creators {
-  background-image: url('/img/web-creators-logo-bw.svg');
+.creators_dot_google {
+  background-image: url('/img/google-g-bw.svg');
 }
 
-.web_creators:hover {
-  background-image: url('/img/web-creators-logo.svg');
+.creators_dot_google:hover {
+  background-image: url('/img/google-g.svg');
 }
 
 .instagram {
