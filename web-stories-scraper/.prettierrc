@@ -6,12 +6,6 @@
   "arrowParens": "always",
   "overrides": [
     {
-      "files": "*.md",
-      "options": {
-        "parser": "markdown"
-      }
-    },
-    {
       "files": [".eslintrc", ".prettierrc"],
       "options": {
         "parser": "json"

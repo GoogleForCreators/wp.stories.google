@@ -115,18 +115,5 @@
         "yields": "yield"
       }
     }
-  },
-  "overrides": [
-    {
-      "files": ["*.md", "**/*.md"],
-      "plugins": ["markdown"],
-      "rules": {
-        "@wordpress/dependency-group": "off",
-        "no-undef": "off",
-        "no-unused-vars": "off",
-        "header/header": "off",
-        "prettier/prettier": "off"
-      }
-    }
-  ]
+  }
 }
