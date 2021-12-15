@@ -3,7 +3,7 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - static-site
+      - main
 
 jobs:
   deploy-firebase:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: static-site
+          ref: main
           lfs: true
 
       - name: Checkout LFS objects
