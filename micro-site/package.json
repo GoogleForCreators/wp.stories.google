@@ -11,7 +11,7 @@
   "homepage": "https://wp.stories.google/",
   "dependencies": {
     "@ampproject/eleventy-plugin-amp": "^0.5.5",
-    "@saschazar/wasm-avif": "^2.0.0",
+    "@saschazar/wasm-avif": "^2.0.1",
     "clean-css": "^5.2.0",
     "concurrently": "^6.2.2",
     "csp-hash-generator": "0.0.3",
