@@ -10,7 +10,7 @@
     "web-stories"
   ],
   "dependencies": {
-    "sitemap": "^7.0.0"
+    "sitemap": "^7.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
