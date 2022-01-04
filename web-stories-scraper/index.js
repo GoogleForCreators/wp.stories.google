@@ -267,7 +267,7 @@ class WebStoriesScraperPlugin {
           )
           // Fix schema data.
           .replace(
-            /<script type="application\/ld\+json">([\s\S]*?)<\/script>/gm,
+            /<script type="application\/ld\+json"( class="yoast-schema-graph")?>([\s\S]*?)<\/script>/gm,
             (match, p1) => {
               try {
                 const metadata = JSON.parse(p1);
