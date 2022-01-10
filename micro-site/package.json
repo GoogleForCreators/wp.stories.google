@@ -28,7 +28,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0.0",
     "luxon": "^2.2.0"
   },
   "peerDependencies": {
