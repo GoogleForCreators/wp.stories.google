@@ -51,6 +51,7 @@ const DATA_DIR = "_data";
 const ampPlugin = require('@ampproject/eleventy-plugin-amp');
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setLiquidOptions({ dynamicPartials: false });
 
   let nunjucksEnvironment = new Nunjucks.Environment(
     new Nunjucks.FileSystemLoader("_includes")
