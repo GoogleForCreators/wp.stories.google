@@ -333,7 +333,10 @@ class WebStoriesScraperPlugin {
             return scripts + '</head>';
           })
           // Override publisher name.
-          .replace(new RegExp(existingPublisher, 'g'), PUBLISHER_NAME);
+          .replace(new RegExp(existingPublisher, 'g'), PUBLISHER_NAME)
+          // Fix some oddities with malformed spaces.
+          // TODO: Figure out where in website-scraper this is happening.
+          .replace(/�&nbsp;/g, ' ');
 
         writeFileSync(filePath, fileContents);
       }
