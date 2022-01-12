@@ -13,13 +13,12 @@
     "@ampproject/eleventy-plugin-amp": "^0.5.5",
     "@saschazar/wasm-avif": "^2.0.1",
     "clean-css": "^5.2.2",
-    "concurrently": "^6.4.0",
     "csp-hash-generator": "0.0.3",
-    "csso": "^5.0.1",
+    "csso": "^5.0.2",
     "datauri": "^4.1.0",
     "hasha": "^5.2.0",
     "html-minifier": "^4.0.0",
-    "image-size": "^1.0.0",
+    "image-size": "^1.0.1",
     "jsdom": "^19.0.0",
     "lru-cache": "^6.0.0",
     "purge-from-html": "^1.0.3",
@@ -28,8 +27,8 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "luxon": "^2.2.0"
+    "@11ty/eleventy": "^1.0.0",
+    "luxon": "^2.3.0"
   },
   "peerDependencies": {
     "nunjucks": "^3"
