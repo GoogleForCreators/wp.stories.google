@@ -26,10 +26,10 @@ const BUCKET_NAME = 'web-stories-wp-cdn-assets';
 
 export const handleCdnRequests = functions.https.onRequest(
   async (request, response) => {
-    functions.logger.info('Hello logs!', { structuredData: true });
+    functions.logger.info('Serving for requested path', request.path);
 
     // "/static/123/images/path/to/image.png" => "123/images/path/to/image.png".
-    const match = request.path.match(/staticnew\/(.*)/);
+    const match = request.path.match(/static\/(.*)/);
 
     if (!match) {
       response.status(404).send();
