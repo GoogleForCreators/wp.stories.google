@@ -22,8 +22,17 @@ import * as admin from 'firebase-admin';
 
 admin.initializeApp();
 
+// Use global variables to reuse objects in future invocations
+// See https://firebase.google.com/docs/functions/tips#use_global_variables_to_reuse_objects_in_future_invocations
 const BUCKET_NAME = 'web-stories-wp-cdn-assets';
+const bucket = admin.storage().bucket(BUCKET_NAME);
 
+// Simple cache so that Firebase *might* reuse these values
+// in future invocations as well.
+let fileUrlCache = new Map<string, string>();
+
+// TODO: Consider runWith() with minInstances === 1 to limit number of cold starts.
+// See https://firebase.google.com/docs/functions/manage-functions#min-max-instances
 export const handleCdnRequests = functions.https.onRequest(
   async (request, response) => {
     functions.logger.info('Serving for requested path', request.path);
@@ -39,11 +48,20 @@ export const handleCdnRequests = functions.https.onRequest(
     const [, requestedPath] = match;
 
     try {
-      const bucket = admin.storage().bucket(BUCKET_NAME);
+      if (fileUrlCache.has(requestedPath)) {
+        const cachedFileUrl = fileUrlCache.get(requestedPath);
+        if (cachedFileUrl) {
+          response.redirect(cachedFileUrl);
+          return;
+        }
+      }
+
       const file = bucket.file(requestedPath);
 
       if ((await file.exists()) && (await file.isPublic())) {
-        response.redirect(file.publicUrl());
+        const fileUrl = file.publicUrl();
+        fileUrlCache.set(requestedPath, fileUrl);
+        response.redirect(fileUrl);
         return;
       }
     } catch {
