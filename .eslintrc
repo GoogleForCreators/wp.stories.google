@@ -1,6 +1,6 @@
 {
   "root": true,
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
@@ -8,7 +8,11 @@
     "plugin:prettier/recommended",
     "plugin:jsdoc/recommended"
   ],
-  "plugins": ["header", "jsdoc"],
+  "plugins": [
+    "@typescript-eslint",
+    "header",
+    "jsdoc"
+  ],
   "rules": {
     "block-scoped-var": "error",
     "complexity": ["error", { "max": 20 }],
