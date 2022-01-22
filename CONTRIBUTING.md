@@ -5,7 +5,7 @@ just a few small guidelines you need to follow.
 
 ## Getting Started
 
-Please check out our dedicated [Getting Started]([./docs/getting-started.md](https://github.com/google/web-stories-wp/blob/main/docs/getting-started.md)) guide.
+Please check out our dedicated [Getting Started]([./docs/getting-started.md](https://github.com/googleforcreators/web-stories-wp/blob/main/docs/getting-started.md)) guide.
 
 ## Contributor License Agreement
 
