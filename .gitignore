@@ -21,6 +21,7 @@ public/img
 public/video
 public/index.html
 micro-site/.cache
+functions/.runtimeconfig.json
 
 # Stories with custom modifications
 !public/stories/a-day-in-the-life-of-dap-the-contract
