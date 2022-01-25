@@ -25,48 +25,67 @@ admin.initializeApp();
 // Use global variables to reuse objects in future invocations
 // See https://firebase.google.com/docs/functions/tips#use_global_variables_to_reuse_objects_in_future_invocations
 const BUCKET_NAME = 'web-stories-wp-cdn-assets';
+const BUCKET_URL = `https://storage.googleapis.com/${BUCKET_NAME}`;
 const bucket = admin.storage().bucket(BUCKET_NAME);
 
-// Simple cache so that Firebase *might* reuse these values
-// in future invocations as well.
-let fileUrlCache = new Map<string, string>();
+let availableVersions: string[] = [];
 
-// TODO: Consider runWith() with minInstances === 1 to limit number of cold starts.
-// See https://firebase.google.com/docs/functions/manage-functions#min-max-instances
+/**
+ * Handle incoming requests to wp.stories.google/static/:version/path/to/file.jpg
+ *
+ * If :version is "main", the latest version is retrieved and the user redirected
+ * to that version.
+ *
+ * If :version is numeric, the user is redirected to the version's bucket unchanged.
+ *
+ * @todo Consider runWith() with minInstances === 1 to limit number of cold starts.
+ * See https://firebase.google.com/docs/functions/manage-functions#min-max-instances
+ */
 export const handleCdnRequests = functions.https.onRequest(
   async (request, response) => {
     functions.logger.info('Serving for requested path', request.path);
 
-    // "/static/123/images/path/to/image.png" => "123/images/path/to/image.png".
-    const match = request.path.match(/static\/(.*)/);
+    // "/static/123/images/path/to/image.png" => "123", "images/path/to/image.png".
+    const match = request.path.match(/static\/(main|\d+)\/(.*)/);
 
     if (!match) {
       response.status(404).send();
       return;
     }
 
-    const [, requestedPath] = match;
+    const [, version, fileName] = match;
 
-    try {
-      if (fileUrlCache.has(requestedPath)) {
-        const cachedFileUrl = fileUrlCache.get(requestedPath);
-        if (cachedFileUrl) {
-          response.redirect(cachedFileUrl);
-          return;
-        }
-      }
+    if ('main' !== version) {
+      // TODO: Just achieve this with a regex redirect.
+      response.redirect(`${BUCKET_URL}/static/${version}/${fileName}`);
+      return;
+    }
 
-      const file = bucket.file(requestedPath);
+    if (!availableVersions.length) {
+      const topLevelBucketFiles: String[] = (
+        await bucket.getFiles({
+          autoPaginate: false,
+          delimiter: '/',
+        })
+      )[2].prefixes;
 
-      if ((await file.exists()) && (await file.isPublic())) {
-        const fileUrl = file.publicUrl();
-        fileUrlCache.set(requestedPath, fileUrl);
-        response.redirect(fileUrl);
+      if (!Array.isArray(topLevelBucketFiles)) {
+        response.status(404).send();
         return;
       }
-    } catch {
-      response.status(404).send();
-      return;
+
+      availableVersions = topLevelBucketFiles
+        .map((name) => name.replace('/', ''))
+        .sort((a, b) => Number(a) - Number(b));
+    }
+
+    functions.logger.info('Available versions: ', availableVersions.join(', '));
+
+    if (availableVersions.length) {
+      const latestVersion = availableVersions.pop();
+      functions.logger.info('Latest version: ', latestVersion);
+
+      response.redirect(`${BUCKET_URL}/static/${latestVersion}/${fileName}`);
     }
 
     response.status(404).send();
