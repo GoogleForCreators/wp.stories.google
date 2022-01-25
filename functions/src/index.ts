@@ -49,7 +49,7 @@ export const handleCdnRequests = functions.https.onRequest(
     functions.logger.info('Latest version from config:', latestVersion);
 
     if (latestVersion) {
-      response.redirect(`${BUCKET_URL}/static/${latestVersion}/${fileName}`);
+      response.redirect(`${BUCKET_URL}/${latestVersion}/${fileName}`);
       return;
     }
 
