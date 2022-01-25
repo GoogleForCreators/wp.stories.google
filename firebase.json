@@ -46,6 +46,11 @@
         "source": "/static/1.:version/:path*",
         "destination": "/static/3/:path*",
         "type": 301
+      },
+      {
+        "regex": "/statictest/(?P<version>[0-9]+)/(?P<path>.*)",
+        "destination": "https://storage.googleapis.com/web-stories-wp-cdn-assets/:version/:path",
+        "type": 302
       }
     ],
     "rewrites": [
