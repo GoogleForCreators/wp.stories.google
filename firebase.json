@@ -48,7 +48,7 @@
         "type": 301
       },
       {
-        "regex": "/statictest/(?P<version>[0-9]+)/(?P<path>.*)",
+        "regex": "/static/(?P<version>[0-9]+)/(?P<path>.*)",
         "destination": "https://storage.googleapis.com/web-stories-wp-cdn-assets/:version/:path",
         "type": 302
       }
