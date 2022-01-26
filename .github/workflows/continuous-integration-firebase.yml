@@ -64,7 +64,7 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v2.0.0
         with:
-          args: deploy --only hosting,functions -m 'Automated deploy from GitHub Actions'
+          args: deploy --force --only hosting,functions -m 'Automated deploy from GitHub Actions'
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}

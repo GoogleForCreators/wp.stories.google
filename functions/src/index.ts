@@ -26,12 +26,12 @@ const BUCKET_URL = `https://storage.googleapis.com/${BUCKET_NAME}`;
  *
  * Redirects them to the GCP bucket for the latest version,
  * which is set via `firebase functions:config:set`.
- *
- * @todo Consider runWith() with minInstances === 1 to limit number of cold starts.
- * See https://firebase.google.com/docs/functions/manage-functions#min-max-instances
  */
-export const handleCdnRequests = functions.https.onRequest(
-  (request, response) => {
+export const handleCdnRequests = functions
+  .runWith({
+    minInstances: 1,
+  })
+  .https.onRequest(async (request, response) => {
     functions.logger.info('Serving for requested path', request.path);
 
     // "/static/123/images/path/to/image.png" => "123", "images/path/to/image.png".
