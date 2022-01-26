@@ -35,21 +35,26 @@ export const handleCdnRequests = functions.https.onRequest(
     functions.logger.info('Serving for requested path', request.path);
 
     // "/static/123/images/path/to/image.png" => "123", "images/path/to/image.png".
-    const match = request.path.match(/static\/main\/(.*)/);
+    const match = request.path.match(/static\/(main|\d+)\/(.*)/);
 
     if (!match) {
       response.status(404).send();
       return;
     }
 
-    const [, fileName] = match;
+    const [, version, fileName] = match;
 
-    const latestVersion = functions.config().assets?.versions?.latest;
+    if ('main' === version) {
+      const latestVersion = functions.config().assets?.versions?.latest;
 
-    functions.logger.info('Latest version from config:', latestVersion);
+      functions.logger.info('Latest version from config:', latestVersion);
 
-    if (latestVersion) {
-      response.redirect(`${BUCKET_URL}/${latestVersion}/${fileName}`);
+      if (latestVersion) {
+        response.redirect(`${BUCKET_URL}/${latestVersion}/${fileName}`);
+        return;
+      }
+    } else {
+      response.redirect(`${BUCKET_URL}/${version}/${fileName}`);
       return;
     }
 
