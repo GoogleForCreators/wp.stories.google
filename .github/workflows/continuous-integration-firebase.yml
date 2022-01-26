@@ -42,7 +42,7 @@ jobs:
           CI: true
 
       - name: Test Firebase Function
-        run: cd functions && npm run test
+        run: cd functions && npm run test test/**.test.ts
 
       - name: Download Web Stories
         run: cat ./stories.txt | xargs -I{} node ./web-stories-scraper/index.js {} ./public/stories/
