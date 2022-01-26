@@ -41,6 +41,9 @@ jobs:
         env:
           CI: true
 
+      - name: Test Firebase Function
+        run: cd functions && npm run test
+
       - name: Download Web Stories
         run: cat ./stories.txt | xargs -I{} node ./web-stories-scraper/index.js {} ./public/stories/
 

@@ -19,7 +19,7 @@ import * as functions from 'firebase-functions';
 // Use global variables to reuse objects in future invocations
 // See https://firebase.google.com/docs/functions/tips#use_global_variables_to_reuse_objects_in_future_invocations
 const BUCKET_NAME = 'web-stories-wp-cdn-assets';
-const BUCKET_URL = `https://storage.googleapis.com/${BUCKET_NAME}`;
+export const BUCKET_URL = `https://storage.googleapis.com/${BUCKET_NAME}`;
 
 /**
  * Handle incoming requests to wp.stories.google/static/main/:path
@@ -31,7 +31,7 @@ export const handleCdnRequests = functions
   .runWith({
     minInstances: 1,
   })
-  .https.onRequest(async (request, response) => {
+  .https.onRequest((request, response) => {
     functions.logger.info('Serving for requested path', request.path);
 
     // "/static/123/images/path/to/image.png" => "123", "images/path/to/image.png".
@@ -50,14 +50,13 @@ export const handleCdnRequests = functions
       functions.logger.info('Latest version from config:', latestVersion);
 
       if (latestVersion) {
-        response.redirect(`${BUCKET_URL}/${latestVersion}/${fileName}`);
+        response.redirect(`${BUCKET_URL}/${latestVersion}/${fileName}`, 302);
         return;
       }
     } else {
-      response.redirect(`${BUCKET_URL}/${version}/${fileName}`);
+      response.redirect(`${BUCKET_URL}/${version}/${fileName}`, 302);
       return;
     }
 
     response.status(404).send();
-  }
-);
+  });

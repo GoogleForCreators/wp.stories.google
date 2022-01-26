@@ -11,7 +11,8 @@
   "plugins": [
     "@typescript-eslint",
     "header",
-    "jsdoc"
+    "jsdoc",
+    "mocha"
   ],
   "rules": {
     "block-scoped-var": "error",
@@ -119,5 +120,15 @@
         "yields": "yield"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "functions/test/**/*.ts"
+        ],
+      "env": {
+        "mocha": true
+      }
+    }
+  ]
 }
