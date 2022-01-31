@@ -12,7 +12,7 @@
   "dependencies": {
     "@ampproject/eleventy-plugin-amp": "^0.5.5",
     "@saschazar/wasm-avif": "^2.0.1",
-    "clean-css": "^5.2.2",
+    "clean-css": "^5.2.4",
     "csp-hash-generator": "0.0.3",
     "csso": "^5.0.2",
     "datauri": "^4.1.0",
