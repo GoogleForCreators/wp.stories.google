@@ -34,6 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          npm ci
           (cd micro-site && npm ci)
           (cd web-stories-scraper && npm ci)
           (cd sitemap-generator && npm ci)
