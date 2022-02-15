@@ -53,7 +53,7 @@ body {
 header {
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 4;
   left: 0;
   right: 0;
   padding: 2rem 6%;
@@ -62,7 +62,6 @@ header {
 header, footer, .docs {
   font-family: Roboto, sans-serif;
 }
-
 
 header, footer {
   display: flex;
