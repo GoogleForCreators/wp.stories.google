@@ -16,12 +16,13 @@
 
 const assert = require('assert');
 
-const functionsTest = require('firebase-functions-test')({});
-functionsTest.mockConfig({ assets: { versions: { latest: '456' } } });
-
 const { handleCdnRequests, BUCKET_URL } = require('../src/index');
 
 describe('handleCdnRequests', () => {
+  afterEach(() => {
+    delete process.env.LATEST_ASSETS_VERSION;
+  });
+
   it('returns 404 if there is no match', (done) => {
     const req = { path: '/soem/other/path' };
     const res = {
@@ -48,6 +49,7 @@ describe('handleCdnRequests', () => {
   });
 
   it('redirects main to latest version', (done) => {
+    process.env.LATEST_ASSETS_VERSION = '456';
     const req = { path: '/static/main/foo/bar' };
     const res = {
       redirect: (url, code) => {
@@ -61,8 +63,6 @@ describe('handleCdnRequests', () => {
   });
 
   it('returns 404 if there is no latest version', (done) => {
-    functionsTest.mockConfig({});
-
     const req = { path: '/static/main/foo/bar' };
     const res = {
       status: (code) => {
