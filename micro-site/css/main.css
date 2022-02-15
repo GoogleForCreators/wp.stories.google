@@ -762,24 +762,39 @@ aside #docs_menu.docs_page li {
 }
 
 .docs main h1 {
-  font-size: 4.875rem;
+  font-size: 2rem;
   font-weight: 100;
   margin-bottom: 0;
 }
 
-.docs main h1 {
-  font-size: 4.875rem;
-  font-weight: 100;
-}
-
 .docs main h2 {
-  font-size: 2rem;
+  font-size: 1.25rem;
   margin-top: 4rem;
   margin-bottom: 0;
 }
 
 .docs main h2:first-of-type {
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .docs main h1 {
+    font-size: 3rem;
+  }
+
+  .docs main h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .docs main h1 {
+    font-size: 4.875rem;
+  }
+
+  .docs main h2 {
+    font-size: 2rem;
+  }
 }
 
 .docs p,
