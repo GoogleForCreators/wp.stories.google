@@ -25,7 +25,7 @@ export const BUCKET_URL = `https://storage.googleapis.com/${BUCKET_NAME}`;
  * Handle incoming requests to wp.stories.google/static/main/:path
  *
  * Redirects them to the GCP bucket for the latest version,
- * which is set via `firebase functions:config:set`.
+ * which is set via the .env file.
  */
 export const handleCdnRequests = functions
   .runWith({
@@ -45,9 +45,9 @@ export const handleCdnRequests = functions
     const [, version, fileName] = match;
 
     if ('main' === version) {
-      const latestVersion = functions.config().assets?.versions?.latest;
+      const latestVersion = process.env.LATEST_ASSETS_VERSION;
 
-      functions.logger.info('Latest version from config:', latestVersion);
+      functions.logger.info('Latest version from .env file:', latestVersion);
 
       if (latestVersion) {
         response.redirect(`${BUCKET_URL}/${latestVersion}/${fileName}`, 302);
