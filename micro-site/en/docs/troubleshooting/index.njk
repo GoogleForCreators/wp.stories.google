@@ -1,0 +1,42 @@
+---
+title: Troubleshoot - Web Stories for WordPress
+description: Learn how to resolve common issues, conflicts, and potential misconfigurations when using the Web Stories WordPress plugin.
+layout: layouts/base.njk
+rootClass: docs
+---
+
+{% set DOCS_BASE = '/docs' %}
+
+<main>
+  <section id="FAQ">
+    <h1>Troubleshooting</h1>
+    <h2>Get help with the "Unable to load media" message</h2>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="525" height="186" src="./img/docs/troubleshooting/unable-to-load-media.png"></amp-img></p>
+    <p>Beginning in v1.19.0, some users may see an "Unable to load media" message in the editor.</p>
+    <p>
+      This message displays in the editor when Web Stories cannot load images and videos in your Media Library.
+      The most common cause for this issue is using a Content Delivery Network (CDN) or other service to host your site's assets.
+      Without the correct HTTP headers set, the connection to CDN-hosted assets will be blocked due to <b>Cross-Origin Resource Sharing</b> (CORS).
+    </p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" rel="noreferrer">Cross-Origin Resource Sharing</a> is a mechanism that allows or disallows the loading of assets from one domain (e.g. Amazon S3) on another domain (e.g. your website).</p>
+    <h3>Confirming the misconfiguration</h3>
+    <p>When this message displays, images and videos typically will appear as an empty space in the editor because they cannot be accessed by the Web Stories plugin.</p>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="348" height="570" src="./img/docs/troubleshooting/media-library-broken.png"></amp-img></p>
+    <p>To further confirm that this issue is caused by CORS, open a story in the editor. In Chrome, right-click, and select <i>Inspect</i>, then the <i>Console</i> tab. A CORS error will look like this:</p>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="800" height="41" src="./img/docs/troubleshooting/console-cors-error.png"></amp-img></p>
+    <p>You will likely see multiple instances of this error in the console, one for each image/video.</p>
+    <h3>Adding an <code>Access-Control-Allow-Origin</code> header</h3>
+    <p>As noted in the console error message, Web Stories cannot load assets in this case because it is "blocked by CORS policy".</p>
+    <p>
+      To adjust the CORS policy and allow images/videos that are offloaded to display in the Web Stories editor, you need to add an <code>Access-Control-Allow-Origin</code> header to your website.
+      The method for setting up a CORS header will vary from host to host, so reach out to your web developer or hosting provider for help and send them this guide for context.
+    </p>
+    <p>Some guides on adding <code>Access-Control-Allow-Origin</code> headers from popular hosts are below:</p>
+    <ul class="real-ul">
+      <li><a href="https://help.dreamhost.com/hc/en-us/articles/360037198972-CORS-headers" rel="noreferrer">DreamHost</a></li>
+      <li><a href="https://support.cloudways.com/en/articles/5124964-how-to-enable-cors-headers-for-your-application" rel="noreferrer">Cloudways</a></li>
+      <li><a href="https://www.siteground.com/kb/cross-origin-resource-sharing-cors/" rel="noreferrer">SiteGround</a></li>
+      <li><a href="https://www.bluehost.com/help/article/htaccess-tutorial" rel="noreferrer">Bluehost</a></li>
+    </ul>
+  </section>
+</main>

@@ -5,6 +5,8 @@ layout: layouts/base.njk
 rootClass: docs
 ---
 
+{% set DOCS_BASE = '/docs' %}
+
 <main>
   <section id="FAQ">
     <h1>Frequently Asked Questions</h1>
@@ -51,5 +53,7 @@ rootClass: docs
     <p>
       Web Stories are powered by <a href="https://amp.dev/">AMP</a>, which adds some restrictions on a page’s allowed markup. In some cases, other WordPress plugins use disallowed markup. We recommend temporarily disabling these plugins and reaching out to our <a href="https://wordpress.org/plugins/web-stories/">support forum</a>.
     </p>
+    <h4>I am getting an "Unable to load media" message in the editor, how do I fix this?</h4>
+    <p>Learn more about this message and how to resolve it on the <a href="{{ DOCS_BASE }}/troubleshooting/">Troubleshooting</a> page</p>
   </section>
 </main>
