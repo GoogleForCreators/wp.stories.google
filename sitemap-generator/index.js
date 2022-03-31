@@ -42,6 +42,7 @@ const links = [
   { url: '/docs/seo/' },
   { url: '/docs/faq/' },
   { url: '/docs/terms/' },
+  { url: '/docs/troubleshooting/' },
   ...stories,
 ];
 
