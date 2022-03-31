@@ -7,11 +7,23 @@ rootClass: docs
 
 {% set DOCS_BASE = '/docs' %}
 
+<aside>
+  <ul id="docs_menu" class="docs_flyout docs_page">
+    <span>
+      <li>Table of Contents</li>
+      <ul id="toc">
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/#CORS-Check">"Unable to load media"</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/#AMP-Validation">AMP validation</a></li>
+      </ul>
+  </span>
+  </ul>
+</aside>
 <main>
-  <section id="FAQ">
+  <section>
     <h1>Troubleshooting</h1>
-    <h2>Get help with the "Unable to load media" message</h2>
-    <p class="img-wrap"><amp-img layout="intrinsic" width="525" height="186" src="./img/docs/troubleshooting/unable-to-load-media.png"></amp-img></p>
+
+    <h2 id="CORS-Check">Get help with the "Unable to load media" message</h2>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="525" height="186" src="./img/docs/troubleshooting/unable-to-load-media.png" alt="Screenshot of the 'Unable to load media' dialog in the Web Stories editor"></amp-img></p>
     <p>Beginning in v1.19.0, some users may see an "Unable to load media" message in the editor.</p>
     <p>
       This message displays in the editor when Web Stories cannot load images and videos in your Media Library.
@@ -21,9 +33,9 @@ rootClass: docs
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" rel="noreferrer">Cross-Origin Resource Sharing</a> is a mechanism that allows or disallows the loading of assets from one domain (e.g. Amazon S3) on another domain (e.g. your website).</p>
     <h3>Confirming the misconfiguration</h3>
     <p>When this message displays, images and videos typically will appear as an empty space in the editor because they cannot be accessed by the Web Stories plugin.</p>
-    <p class="img-wrap"><amp-img layout="intrinsic" width="348" height="570" src="./img/docs/troubleshooting/media-library-broken.png"></amp-img></p>
-    <p>To further confirm that this issue is caused by CORS, open a story in the editor. In Chrome, right-click, and select <i>Inspect</i>, then the <i>Console</i> tab. A CORS error will look like this:</p>
-    <p class="img-wrap"><amp-img layout="intrinsic" width="800" height="41" src="./img/docs/troubleshooting/console-cors-error.png"></amp-img></p>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="348" height="570" src="./img/docs/troubleshooting/media-library-broken.png" alt="Screenshot of the Web Stories editor's media library with images not being loaded correctly."></amp-img></p>
+    <p>To further confirm that this issue is caused by CORS, open a story in the editor. In Chrome, right-click, and select <b>Inspect</b>, then the <b>Console</b> tab. A CORS error will look like this:</p>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="800" height="41" src="./img/docs/troubleshooting/console-cors-error.png" alt="Screenshot of CORS errors listed in the browser's developer tools"></amp-img></p>
     <p>You will likely see multiple instances of this error in the console, one for each image/video.</p>
     <h3>Adding an <code>Access-Control-Allow-Origin</code> header</h3>
     <p>As noted in the console error message, Web Stories cannot load assets in this case because it is "blocked by CORS policy".</p>
@@ -38,5 +50,39 @@ rootClass: docs
       <li><a href="https://www.siteground.com/kb/cross-origin-resource-sharing-cors/" rel="noreferrer">SiteGround</a></li>
       <li><a href="https://www.bluehost.com/help/article/htaccess-tutorial" rel="noreferrer">Bluehost</a></li>
     </ul>
+
+    <h2 id="AMP-Validation">AMP Validation</h2>
+    <p>
+      Web Stories are powered by AMP, which adds some restrictions on a page’s allowed markup.
+      For Web Stories to be eligible to appear on Google Search or Google Discover experiences, they need to adhere to various <a href="https://amp.dev/documentation/guides-and-tutorials/learn/webstory_technical_details/" rel="noreferrer">AMP specifications</a>.
+      This allows the story to be served via the AMP cache and ensures performance and the best experience for your users.
+    </p>
+    <p>In some cases, other WordPress plugins can interfere with stories and insert disallowed markup, causing AMP validation issues. Some examples of common AMP validation issues in stories:</p>
+    <ul class="real-ul">
+      <li>Missing publisher logo</li>
+      <li>Missing poster image</li>
+      <li>Mandatory tag missing</li>
+      <li>Custom JavaScript not allowed</li>
+      <li><code>html !doctype'</code> is missing or incorrect</li>
+    </ul>
+    <p>After you've developed the story, make sure the Web Story is valid AMP. A valid AMP story is one that adheres to various AMP specifications.  You can use the following tools ensure that your Web Story is valid AMP:</p>
+    <h3>Web Stories Google Test Tool</h3>
+    <p>
+      The <a href="" rel="noreferrer">Web Stories Google Test Tool</a> allows you to check that the Web Story is valid.
+      To validate your story, paste your story URL into the text box and select the <b>Test URL</b> button. Your story will be scanned by the tool and test results displayed soon after.
+    </p>
+    <p>Results will return as valid or invalid. If your story is invalid, a list of validation errors will be displayed.</p>
+    <p>Invalid Web Story example:</p>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="800" height="345" src="./img/docs/troubleshooting/amp-validation-invalid.png" alt="Screenshot of the AMP Test Tool's result page in the case of AMP validation errors"></amp-img></p>
+    <p>Valid Web Story example:</p>
+    <p class="img-wrap"><amp-img layout="intrinsic" width="800" height="303" src="./img/docs/troubleshooting/amp-validation-valid.png" alt="Screenshot of the AMP Test Tool's result page in the case of successful AMP validation"></amp-img></p>
+    <p>Further useful resources</p>
+    <ul class="real-ul">
+      <li><a href="https://support.google.com/webmasters/answer/7320015?hl=en" rel="noreferrer">AMP Test</a></li>
+      <li><a href="https://support.google.com/webmasters/answer/7450883?hl=en&ref_topic=9384624" rel="noreferrer">AMP status report</a></li>
+      <li><a href="https://support.google.com/webmasters/answer/9012289" rel="noreferrer">URL Inspection Tool</a></li>
+      <li><a href="https://developers.google.com/search/docs/advanced/appearance/enable-web-stories" rel="noreferrer">Enable Web Stories on Google</a></li>
+    </ul>
+
   </section>
 </main>
