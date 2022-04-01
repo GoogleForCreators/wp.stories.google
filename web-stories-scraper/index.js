@@ -268,36 +268,35 @@ class WebStoriesScraperPlugin {
           // Fix schema data.
           .replace(
             /<script type="application\/ld\+json"( class="yoast-schema-graph")?>([\s\S]*?)<\/script>/gm,
-            (match, p1) => {
-              try {
-                const metadata = JSON.parse(p1);
-                if (metadata.image) {
-                  metadata.image =
-                    `${WEBSITE_LOCATION}${storySlug}/` +
-                    fileContents.match(/poster-portrait-src="([^"]+)"/)[1];
-                }
-                if (metadata?.publisher?.name) {
-                  metadata.publisher.name = PUBLISHER_NAME;
-                }
-                if (metadata?.publisher?.logo) {
-                  metadata.publisher.logo.url =
-                    `${WEBSITE_LOCATION}${storySlug}/` +
-                    fileContents.match(/publisher-logo-src="([^"]+)"/)[1];
-                }
-                if (metadata.author) {
-                  metadata.author['@type'] = 'Organization';
-                  metadata.author['name'] = PUBLISHER_NAME;
-                }
-                metadata.mainEntityOfPage = `${WEBSITE_LOCATION}${storySlug}`;
-                return `<script type="application/ld+json">${JSON.stringify(
-                  metadata
-                )}</script>`;
-              } catch (err) {
-                console.log('Could not extract & modify schema.org metadata.');
-              }
-
-              return '';
-            }
+            '<script type="application/ld+json">' +
+              JSON.stringify({
+                '@context': 'https://schema.org',
+                publisher: {
+                  '@type': 'Organization',
+                  name: PUBLISHER_NAME,
+                  logo: {
+                    '@type': 'ImageObject',
+                    url:
+                      `${WEBSITE_LOCATION}${storySlug}/` +
+                      fileContents.match(/publisher-logo-src="([^"]+)"/)[1],
+                    width: 96,
+                    height: 96,
+                  },
+                },
+                image:
+                  `${WEBSITE_LOCATION}${storySlug}/` +
+                  fileContents.match(/poster-portrait-src="([^"]+)"/)[1],
+                '@type': 'Article',
+                mainEntityOfPage: `${WEBSITE_LOCATION}${storySlug}`,
+                headline: 'Tips To Make The Most Of the Web Stories editor',
+                datePublished: '2020-09-22T12:34:13-04:00',
+                dateModified: '2020-12-07T20:57:52-05:00',
+                author: {
+                  '@type': 'Organization',
+                  name: PUBLISHER_NAME,
+                },
+              }) +
+              '</script>'
           )
           // Workaround for https://github.com/website-scraper/node-website-scraper/issues/355.
           .replace(
@@ -361,12 +360,10 @@ const options = {
     { selector: 'meta[property="og:image"]', attr: 'content' },
     { selector: 'meta[name="twitter:image"]', attr: 'content' },
     // So as to not fetch preloaded amp-story-1.0.js.
-    { selector: 'link[rel="preload"][as="audio"]', attr: 'href' },
-    { selector: 'link[rel="preload"][as="image"]', attr: 'href' },
-    { selector: 'link[rel="preload"][as="track"]', attr: 'href' },
-    { selector: 'link[rel="preload"][as="video"]', attr: 'href' },
+    { selector: 'link[rel="preload"]:not([as="script"])', attr: 'href' },
     { selector: 'link[rel="canonical"]', attr: 'href' },
     { selector: 'track', attr: 'src' },
+    { selector: 'amp-story-page-outlink', attr: 'cta-image' },
   ],
   subdirectories: [
     {
