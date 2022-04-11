@@ -1,6 +1,6 @@
 ---
 title: Best Practices - Web Stories for WordPress
-description: Get started using Web Stories for WordPress! Learn how you can easily create visual narratives with tappable interactions, and share freely across the web, or embed them on your existing content strategies.
+description: Make the most out of your Web Stories by following a set of best practices on story creation.
 layout: layouts/base.njk
 rootClass: docs
 ---
@@ -12,7 +12,7 @@ rootClass: docs
     <span>
       <li>Table of Contents</li>
       <ul id="toc">
-        <li><a href="{{ DOCS_BASE }}/best-practices/#Using-assistive-text-for-images-video">Using assistive text for images &amp; video</a></li>
+        <li><a href="{{ DOCS_BASE }}/best-practices/#Accessibility">Using assistive text for images &amp; video</a></li>
         <li><a href="{{ DOCS_BASE }}/best-practices/#Video-captioning">Include video captions</a></li>
         <li><a href="{{ DOCS_BASE }}/best-practices/#Avoiding-burned-in-text-on-assets">Avoiding ‘burned-in’ text on assets</a></li>
         <li><a href="{{ DOCS_BASE }}/best-practices/#Media-Optimization">Optimizing your images &amp; videos</a></li>
@@ -25,7 +25,19 @@ rootClass: docs
   <section id="Best_Practices">
     <h1>Best Practices</h1>
 
-    <h2 id="Using-assistive-text-for-images-video">Using assistive text for images &amp; video</h2>
+    <h2 id="editorial-guidelines">Editorial Guidelines</h2>
+
+    <p>
+      The possibilities when building a Web Story are as endless as your imagination and we encourage you to get creative and think outside the box. But, to successfully break the rules, you need to learn them.
+      Check out this <a href="https://creators.google/en-us/content-creation-guides/modern-storytelling-with-web-stories/introduction-to-editorial-guidelines/">set of editorial guidelines</a> on the Google for Creators site.
+    </p>
+
+    <p>
+      Text is extremely important, even if your Web Story is video or sound based. Some viewers may be in a situation that doesn’t allow them to listen to your story, or they may be hearing impaired. Thoughtful use of text and captions will widen your audience and feel inclusive.
+      We highly recommend reading the <a href="https://creators.google/en-us/content-creation-guides/modern-storytelling-with-web-stories/web-story-text-and-font-editorial-guidelines/">text and font editorial guidelines</a>.
+    </p>
+
+    <h2 id="Accessibility">Using assistive text for images &amp; video</h2>
 
     <p>
       Make your images and videos accessible to users of screen readers by adding assistive text.
@@ -82,29 +94,22 @@ rootClass: docs
     <h2 id="Media-Optimization">Optimizing your images &amp; videos</h2>
 
     <p>
-      <b>Did you know?</b> When you upload videos to the story editor, it will automatically optimize videos for optimal load times. While this feature can be disabled in the settings, we recommend keeping it enabled. Video files that are too large or have an unsupported format (like <code>.mov</code>) will otherwise not display properly.
+      <b>Did you know?</b> When you upload videos to the story editor, it will <a href="{{ DOCS_BASE }}/how-to/media/#Video-Optimization">automatically optimize videos</a> for optimal load times.
     </p>
 
-    <p>The editor doesn’t yet have the capability to automatically optimize image content, it’s a good idea to invest into optimizing them in advance.
+    <p>
+      The editor does not yet have the capability to automatically optimize image content, so it’s a good idea to invest into optimizing them in advance.
+    </p>
 
     <p>
       To optimize your images:
     </p>
+
     <ul class="real-ul">
       <li>Crop to only the visible portion of your image</li>
       <li>Use PNG8+alpha or WebP for images that require transparency (for example by using <a href="https://pngmini.com/">ImageAlpha</a> or <a href="https://squoosh.app/">Squoosh</a>)</li>
       <li>Use optimized JPEGs or WebP for all other images (easy with <a href="https://squoosh.app/">Squoosh</a>)</li>
       <li>Avoid GIFs (use autoplaying looping video instead)</li>
-    </ul>
-
-    <p>
-      And in case you want to manually optimize videos before uploading:
-    </p>
-
-    <ul class="real-ul">
-      <li>Trim to the exact length you need</li>
-      <li>Crop to only the visible portion of our video (usually vertical, 9:16)
-      <li>Encode with the highest compression yielding acceptable results. For H264, that’s often below a CRF of 23 or a bit rate below 1500kbps</li>
     </ul>
 
     <h2 id="Embeds">Embedding Web Stories across your site</h2>
@@ -119,6 +124,52 @@ rootClass: docs
 
     <p class="img-wrap">
       <amp-img layout="intrinsic" width="1000" height="910" src="./img/docs/best-practices/web-stories-block.png"></amp-img>
+    </p>
+
+    <h3 id="Shortcodes">Shortcodes</h3>
+
+    <p>
+      We highly recommend using the Web Stories block to embed Web Stories across your site.
+      However, if you are using the classic editor or some page builder solution, you might want to use our dedicated shortcodes to embed stories.
+    </p>
+
+    <p>To display a single story in an embed, you can use the <code>[web_stories_embed]</code> shortcode. Example:</p>
+
+    <p><code>[web_stories_embed url="https://wp.stories.google/stories/how-to-optimize-videos-for-web-stories/" width="360" height="600" title="How to optimize videos for Web Stories" ]</code></p>
+
+    <p>It supports the following attributes:</p>
+
+    <ul class="real-ul">
+      <li><code>url</code> &mdash; the story URL (required)</li>
+      <li><code>width</code> &mdash; embed width (optional, default: <code>360</code>)</li>
+      <li><code>height</code> &mdash; embed height (optional, default: <code>600</code>)</li>
+      <li><code>title</code> &mdash; story title (optional, but recommended)</li>
+      <li><code>poster</code> &mdash; the story poster URL (optional, but recommended)</li>
+      <li><code>align</code> &mdash; embed alignment (optional, default: <code>none</code>). Possible values: <code>none</code>, <code>left</code>, <code>right</code>, <code>center</code>, <code>wide</code></li>
+    </ul>
+
+    <p>To display your latest stories in an embed, you can use the <code>[web_stories]</code> shortcode. For example:</p>
+
+    <ul class="real-ul">
+      <li><code>view</code> &mdash; type of view (required, default: <code>circles</code>). Possible values: <code>circles</code>, <code>grid</code>, <code>carousel</code>, <code>list</code></li>
+      <li><code>number_of_columns</code> &mdash; number of columns in grid mode (optional, default: <code>1</code>)</li>
+      <li><code>title</code> &mdash; whether to display the story title (optional, default <code>false</code>)</li>
+      <li><code>excerpt</code> &mdash; whether to display the story excerpt (optional, default: <code>false</code>)</li>
+      <li><code>author</code> &mdash; whether to display the story author (optional, default: <code>false</code>)</li>
+      <li><code>date</code> &mdash; whether to display the story date (optional, default: <code>false</code>)</li>
+      <li><code>archive_link</code> &mdash; whether to display a link to the stories archive (optional, default: <code>false</code>)</li>
+      <li><code>archive_link_label</code> &mdash; archive link label (optional, default: <code>View all stories</code>)</li>
+      <li><code>image_alignment</code> &mdash; image alignment for list view (optional, default: <code>left</code>)</li>
+      <li><code>class</code> &mdash; additional HTML class names to add (optional)</li>
+      <li><code>circle_size</code> &mdash; size of circles in carousel view (optional, default: <code>150</code>)</li>
+      <li><code>number_of_stories</code> &mdash; number of stories to display (optional, default: <code>10</code>)</li>
+      <li><code>order</code> &mdash; order of stories (optional, default: <code>DESC</code>). Possible values: <code>DESC</code>, <code>ASC</code></li>
+      <li><code>orderby</code> &mdash; key to order stories by (optional, default: <code>post_date</code>). Possible values: <code>post_date</code>, <code>post_title</code></li>
+      <li><code>sharp_corners</code> &mdash; whether to use sharp instead of rounded corners (optional, default: <code>false</code>)</li>
+    </ul>
+
+    <p>
+      <b>Tip:</b> Use the dedicated Web Stories button in the classic editor to configure this shortcode.
     </p>
   </section>
 </main>

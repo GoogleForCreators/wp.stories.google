@@ -1,0 +1,52 @@
+name: Lint & Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+# Cancels all previous workflow runs for pull requests that have not completed.
+concurrency:
+  # The concurrency group contains the workflow name and the branch name for pull requests
+  # or the commit hash for any other events.
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          lfs: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+          cache-dependency-path: |
+            micro-site/package-lock.json
+            sitemap-generator/package-lock.json
+            web-stories-scraper/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          (cd micro-site && npm ci)
+          (cd web-stories-scraper && npm ci)
+          (cd sitemap-generator && npm ci)
+          (cd functions && npm ci)
+        env:
+          CI: true
+
+      - name: Lint
+        run: npm run lint:js
+
+      - name: Test Firebase Function
+        run: cd functions && npm run test test/**.test.ts

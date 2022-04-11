@@ -14,8 +14,7 @@ rootClass: docs
       <ul id="toc">
         <li><a href="{{ DOCS_BASE }}/seo/#Adding-necessary-metadata">Adding necessary metadata</a></li>
         <li><a href="{{ DOCS_BASE }}/seo/#Monetization">Monetize your stories</a></li>
-        <li><a href="{{ DOCS_BASE }}/seo/#Adding-Analytics">Adding Analytics</a></li>
-        <li><a href="https://blog.amp.dev/2020/02/12/seo-for-amp-stories/">Additional SEO advice</a></li>
+        <li><a href="{{ DOCS_BASE }}/seo/#Analytics">Adding Analytics</a></li>
       </ul>
     </span>
   </ul>
@@ -23,9 +22,21 @@ rootClass: docs
 <main>
   <section id="SEO-Optimization">
     <h1>SEO &amp; Optimization</h1>
+
     <h2 id="Adding-necessary-metadata">Adding metadata</h2>
+
     <p>
-      Metadata can be attached to the Web Story from the Document tab in the Design panel. This includes the cover image, author, and an excerpt or description. Adding these ensures maximum compatibility with search engines and discovery features that take advantage of that metadata.
+      Metadata can be attached to the Web Story from the Document tab in the sidebar, as well as directly before publishing.
+      This includes the cover image, author, and an excerpt or description.
+      Add these to ensure maximum compatibility with search engines and discovery features that take advantage of that metadata.
+    </p>
+
+    <p class="img-wrap">
+      <amp-img layout="intrinsic" width="559" height="300" src="./img/docs/seo/publish-modal.png"></amp-img>
+    </p>
+
+    <p>
+      <b>Tip:</b> Consult the <a href="{{ DOCS_BASE }}/getting-started/editor/#Checklist">checklist</a> to see which required metadata is missing before publishing your story.
     </p>
 
     <h2 id="Monetization">Monetize your stories</h2>
@@ -44,7 +55,8 @@ rootClass: docs
 
     <p>If you use the <a href="https://sitekit.withgoogle.com/">Site Kit by Google</a> WordPress plugin, you can set up Google AdSense there.</p>
 
-    <h2 id="Adding-Analytics">Adding Analytics</h2>
+    <h2 id="Analytics">Adding Analytics</h2>
+
     <p>
       There are two ways to include analytics in your Web Stories:
     </p>
@@ -55,12 +67,14 @@ rootClass: docs
     </ul>
 
     <h3>What is the "improved analytics configuration"?</h3>
+
     <p>
       Up until version 1.12.0, Web Stories for WordPress used a custom analytics configuration with a custom set of events.
       Starting in version 1.13.0, we changed the default analytics configuration to a streamlined, <a href="https://amp.dev/documentation/components/amp-story-auto-analytics/">recommended preset</a> with fewer events.
       Existing users will continue to use the previous configuration unless opted-in by clicking the "Migrate" button.
       The specific changes are listed in the table below.
     </p>
+
     <table>
       <tr>
         <th scope="col">Before v1.13</th>
@@ -125,7 +139,7 @@ rootClass: docs
       <tr>
         <td data-label="Before"><code>story_bookend_enter</code></td>
         <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when the the story displays the bookend to the user, after the last page of the current story.</td>
+        <td data-label="Description">Fired when the story displays the bookend to the user, after the last page of the current story.</td>
       </tr>
       <tr>
         <td data-label="Before"><code>story_bookend_exit</code></td>
@@ -133,10 +147,5 @@ rootClass: docs
         <td data-label="Description">Fired when the user dismisses the bookend.</td>
       </tr>
     </table>
-
-    <h2 id="Additional-SEO-advice">Additional SEO advice</h2>
-    <p>
-      For more in-depth SEO advice, read <a href="https://blog.amp.dev/2020/02/12/seo-for-amp-stories/">SEO for AMP Stories</a> on the AMP Blog.
-    </p>
   </section>
 </main>
