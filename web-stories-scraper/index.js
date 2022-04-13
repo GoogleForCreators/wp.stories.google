@@ -137,26 +137,6 @@ class WebStoriesScraperPlugin {
         };
       }
 
-      // Handle cases like https://media.tenor.com/videos/d99cfb8cc99410e25c94a3fd055822f4/mp4
-      if (urlPath.endsWith('/mp4')) {
-        filename = basename(urlPath.replace('/mp4', '.mp4'));
-      }
-
-      // Handle cases like https://media.tenor.com/images/6166cdb8fd058cc357fef30656310d07/tenor.gif
-      if (urlPath.endsWith('/tenor.gif')) {
-        filename = basename(urlPath.replace('/tenor.gif', '.gif'));
-      }
-
-      // Handle cases like https://images.unsplash.com/photo-1601758174493-45d0a4d3e407?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80
-      if (parsedURL.searchParams.get('w')) {
-        filename += '-' + parsedURL.searchParams.get('w');
-      }
-
-      // Especially Unsplash images do not have an extension.
-      if (!extname(filename)) {
-        filename += '.jpg';
-      }
-
       let fileExtension = extname(filename);
 
       const directoryByExtension =
@@ -376,6 +356,12 @@ const options = {
     },
   ],
   plugins: [new SaveToExistingDirectoryPlugin(), new WebStoriesScraperPlugin()],
+  urlFilter: function (_url) {
+    return (
+      _url.startsWith('https://stories-labs.dev/') ||
+      _url.startsWith('https://stories-new-wordpress-amp.pantheonsite.io/')
+    );
+  },
 };
 
 const result = await scrape(options);
