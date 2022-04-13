@@ -62,7 +62,9 @@ jobs:
         run: node ./sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        run: npx firebase deploy --project=$PROJECT_ID --token=$FIREBASE_TOKEN -m "Automated deploy from GitHub Actions"
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SA_KEY }}
+          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          channelId: live
