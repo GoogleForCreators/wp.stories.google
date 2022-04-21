@@ -7,25 +7,7 @@ updates:
     open-pull-requests-limit: 10
 
   - package-ecosystem: npm
-    directory: '/micro-site'
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-
-  - package-ecosystem: npm
-    directory: '/sitemap-generator'
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-
-  - package-ecosystem: npm
-    directory: '/web-stories-scraper'
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 10
-
-  - package-ecosystem: npm
-    directory: '/functions'
+    directory: '/'
     schedule:
       interval: weekly
     open-pull-requests-limit: 10

@@ -23,33 +23,25 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: npm
-          cache-dependency-path: |
-            micro-site/package-lock.json
-            sitemap-generator/package-lock.json
-            web-stories-scraper/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
-          (cd micro-site && npm ci)
-          (cd web-stories-scraper && npm ci)
-          (cd sitemap-generator && npm ci)
-          (cd functions && npm ci)
+        run: npm ci
         env:
           CI: true
 
       - name: Test Firebase Function
-        run: cd functions && npm run test test/**.test.ts
+        run: cd packages/functions && npm run test test/**.test.ts
 
       - name: Download Web Stories
-        run: cat ./stories.txt | xargs -I{} node ./web-stories-scraper/index.js {} ./public/stories/
+        run: cat ./stories.txt | xargs -I{} node ./packages/web-stories-scraper/index.js {} ./public/stories/
 
       - name: Undo changes to local stories
         run: |
           git checkout public/stories/a-day-in-the-life-of-dap-the-contract/index.html
 
       - name: Build website
-        run: cd micro-site && npm run build
+        run: cd packages/micro-site && npm run build
 
       - name: Compress images for website and downloaded stories
         uses: calibreapp/image-actions@1.1.0
@@ -59,7 +51,7 @@ jobs:
           ignorePaths: 'node_modules/**,micro-site/**,public/static/**'
 
       - name: Build XML Sitemap
-        run: node ./sitemap-generator/index.js ./public/sitemap.xml
+        run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
