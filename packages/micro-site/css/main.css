@@ -261,7 +261,8 @@ header .docs_flyout {
   max-width: 80%;
   margin-top: 1rem;
   padding: 3rem 1.2rem 2.2rem;
-  line-height: 1.4
+  line-height: 1.4;
+  overflow-x: scroll;
 }
 
 /* purgecss ignore */
