@@ -1,0 +1,169 @@
+---
+title: Using Troubleshooting Mode - Web Stories for WordPress
+description: Learn how to safely use troubleshooting mode to identify conflicts with other plugins or with your site's theme.
+layout: layouts/base.njk
+rootClass: docs
+---
+
+{% set DOCS_BASE = '/docs/troubleshooting/troubleshooting-mode' %}
+
+<aside>
+  <ul id="docs_menu" class="docs_flyout docs_page">
+    <span>
+      <li>Table of Contents</li>
+      <ul id="toc">
+        <li><a href="{{ DOCS_BASE }}/#Installation">Installing the plugin</a></li>
+        <li><a href="{{ DOCS_BASE }}/#Troubleshooting">Turning on Troubleshooting Mode</a></li>
+        <li><a href="{{ DOCS_BASE }}/#Continue">Continuing troubleshooting as needed</a></li>
+        <li><a href="{{ DOCS_BASE }}/#Disabling">Disabling Troubleshooting Mode</a></li>
+      </ul>
+  </span>
+  </ul>
+</aside>
+<main>
+  <section>
+    <h1>Using Troubleshooting Mode</h1>
+
+    <p>
+      One of the most common causes of issues with WordPress plugins is conflicts with other plugins or with your site’s theme. One way to identify a possible conflict is to deactivate your plugins and switch to a default WordPress theme.
+      However, temporarily deactivating plugins or switching themes may not be possible, may be time-consuming, or may impact how your site displays to users.
+    </p>
+
+    <p>
+      The <a href="https://wordpress.org/plugins/health-check/">Health Check &amp; Troubleshooting</a> plugin allows you to do these troubleshooting steps safely, without affecting the front-end of your site and what your site visitors see.
+    </p>
+
+    <p>
+      <b>Note:</b> If you are experiencing AMP validation errors with your Web Stories when running them through the AMP Test Tool, the Health Check & Troubleshooting plugin won’t be able to identify any potential plugin/theme conflicts.
+      These possible conflicts will need to be investigated by manually deactivating plugins/themes.
+      For steps on how to do this, refer to the <a href="#Outside-Troubleshooting-Mode">Troubleshooting outside of Troubleshooting Mode</a> section below.
+    </p>
+
+    <h2 id="Installation">Install and activate the plugin</h2>
+
+    <ol>
+      <li>In your WordPress admin, go to <b>Plugins</b> &rarr; <b>Add New</b>.</li>
+      <li>Search for "Health Check".</li>
+      <li>Click on <b>Install Now</b> next to Health Check &amp; Troubleshooting</li>
+      <li>Once installed, click on <b>Activate</b></li>
+    </ol>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="512" height="173" src="./img/docs/troubleshooting/troubleshooting-mode/install.png" alt="Screenshot of the search results for the Health Check plugin"></amp-img></p>
+
+    <h2 id="Troubleshooting">Turning on Troubleshooting Mode</h2>
+
+    <p>
+      In the WordPress admin, go to <b>Plugins</b> &gt; <b>Installed Plugins</b>.
+      You will now see a <b>Troubleshoot</b> option for each of your plugins. Select <b>Troubleshoot</b> next to Web Stories.
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="140" height="109" src="./img/docs/troubleshooting/troubleshooting-mode/enable-troubleshoot.png" alt="Screenshot of the section where troubleshooting mode can be enabled"></amp-img></p>
+
+    <p>
+      A panel will appear at the top of the Plugins page showing that you are in Troubleshooting Mode.
+      As described on the screen, deactivating plugins or themes while in Troubleshooting Mode has <b>no effect</b> on your site’s visitors. They will see what they normally would.
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="800" height="228" src="./img/docs/troubleshooting/troubleshooting-mode/panel.png" alt="Screenshot of the Troubleshooting Mode panel"></amp-img></p>
+
+    <h3 id="Troubleshooting-With-Default-Theme">Troubleshooting with Web Stories and a default theme</h3>
+
+    <p>
+      Now that you’re in Troubleshooting Mode with Web Stories enabled, check to see if the problem that you’ve been experiencing is still occurring. For example, if you were experiencing errors in the Editor, try opening and editing a story again.
+    </p>
+
+    <p>
+      You can always return to the Troubleshooting Mode panel by clicking <b>Troubleshooting Mode</b> in the admin toolbar.
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="529" height="257" src="./img/docs/troubleshooting/troubleshooting-mode/toolbar.png" alt="Screenshot of the Troubleshooting menu item in the toolbar"></amp-img></p>
+
+    <p>
+      If the issue is still occurring with only Web Stories activated, try changing to a default theme by selecting <b>Available themes</b> in the Troubleshooting Mode panel and clicking on <b>Switch to this theme</b> next to one of the WordPress default themes named after a year (Twenty Twenty, Twenty Twenty One, etc.)
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="800" height="197" src="./img/docs/troubleshooting/troubleshooting-mode/available-themes.png" alt="Screenshot of the Available Themes list"></amp-img></p>
+
+    <p>
+      After switching to a default theme, check again to see if the problem that you’ve been experiencing with Web Stories is still occurring.
+    </p>
+
+    <p>
+      <b>If your problem is still occurring with only Web Stories and/or the default theme turned on</b>, the issue is likely not theme- or plugin-related. Feel free to create a topic on our support forum for further assistance
+    </p>
+
+    <p>
+      <b>If your problem is not occurring with only Web Stories and/or the default theme turned on</b>, it means that one of your plugins or your theme could be causing the issue. Continue troubleshooting by following the steps below
+    </p>
+
+    <h2 id="Continue">Continuing troubleshooting as needed</h2>
+
+    <p>
+      If the issue that you’ve been experiencing with Web Stories does not occur with only Web Stories enabled, turn your other plugins back on, one at a time.
+    </p>
+
+    <p>
+      To enable a plugin in Troubleshooting Mode, click on <b>Available plugins</b> and then <b>Enable</b> next to the plugin name. Make sure that Web Stories is still enabled.
+      After enabling a plugin, check to see if your Web Stories issue is still occurring. If the issue begins to occur again after a plugin is turned on, that plugin could be causing the issue with Web Stories.
+      You can temporarily disable it and reach out to that plugin’s support for further assistance
+    </p>
+
+    <h2 id="Disabling">Disabling Troubleshooting Mode</h2>
+
+    <p>
+      When you’re done with troubleshooting, you can turn off Troubleshooting Mode by clicking on the Disable Troubleshooting Mode button.
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="437" height="217" src="./img/docs/troubleshooting/troubleshooting-mode/disable.png" alt="Screenshot of the Troubleshooting panel for disabling it"></amp-img></p>
+
+    <h2 id="Outside-Troubleshooting-Mode">Troubleshooting outside of Troubleshooting Mode</h2>
+
+    <p>
+      When experiencing AMP validation errors through the <a href="https://search.google.com/test/amp">AMP Test Tool</a> on your Web Stories, the troubleshooting steps using the Health Check and Troubleshooting plugin will not work to identify plugin/theme conflicts.
+      You will need to manually deactivate your site’s plugins and themes in order for AMP test results to update.
+    </p>
+
+    <h3 id="Plugins">Plugins</h3>
+
+    <p>
+      In the WordPress admin, go to <b>Plugins</b> &gt; <b>Installed Plugins</b>.
+      One by one, select the <b>Deactivate</b> option for your plugins making sure to leave the Web Stories plugin active.
+      After each plugin you deactivate, run your Web Story URL through the <a href="https://search.google.com/test/amp">AMP Test Tool</a> once more to check if the validation errors no longer occur.
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="139" height="108" src="./img/docs/troubleshooting/troubleshooting-mode/deactivate.png" alt="Screenshot of the section for deactivating a plugin"></amp-img></p>
+
+    <p>
+      For best results, run the validation check in an <b>Incognito browsing window</b> to avoid any cached results.
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="603" height="473" src="./img/docs/troubleshooting/troubleshooting-mode/incognito.png" alt="Screenshot of the browser menu showing how to open a new incognito window"></amp-img></p>
+
+    <p>
+      <b>If your problem is still occurring with only Web Stories turned on</b>, the issue is likely not plugin-related. Continue to the <a href="#Theme">Theme section</a> below to continue troubleshooting
+    </p>
+
+    <p>
+      <b>If your problem is no longer occurring after deactivating a particular plugin</b>, it means that that plugin is likely causing the issue. You can temporarily keep the plugin disabled and reach out to the plugin’s support for further assistance
+    </p>
+
+    <h3 id="Theme">Theme</h3>
+
+    <p>
+      In the WordPress admin, go to <b>Appearance</b> &gt; <b>Themes</b>.
+      Find one of the WordPress default themes named after a year (Twenty Twenty, Twenty Twenty One, etc.) and select <b>Activate</b>.
+      Run your Web Story URL through the <a href="https://search.google.com/test/amp">AMP Test Tool</a> once more to check if the validation errors no longer occur.
+      For best results, run the validation check in an <b>Incognito browsing window</b> to avoid any cached results.
+    </p>
+
+    <p>
+      <b>If your problem is still occurring with the default theme enabled</b>, the issue is likely not theme-related.
+      Feel free to create a topic on our <a href="https://wordpress.org/support/plugin/web-stories/#new-topic-0">support forum</a> for further assistance.
+    </p>
+
+    <p>
+      <b>If your problem is not occurring after enabling a default theme</b>, it means that your theme is likely causing the issue.
+      You can temporarily keep your theme disabled and reach out to your theme’s support for further assistance.
+    </p>
+  </section>
+</main>

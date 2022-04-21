@@ -48,6 +48,8 @@ const links = [
   { url: '/docs/faq/' },
   { url: '/docs/terms/' },
   { url: '/docs/troubleshooting/' },
+  { url: '/docs/troubleshooting/common-issues/' },
+  { url: '/docs/troubleshooting/troubleshooting-mode/' },
   ...stories,
 ];
 

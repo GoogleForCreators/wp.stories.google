@@ -102,6 +102,11 @@ header .links {
   white-space: nowrap;
 }
 
+footer .links {
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
 footer .links a,
 header .links a {
   padding: 0 1rem;
@@ -177,7 +182,8 @@ ul {
 .logo_link {
   line-height: 0;
   filter: invert(1);
-  vertical-align: middle;
+  bottom: -6px;
+  position: relative;
 }
 
 .logo_link ~ a {
@@ -820,7 +826,7 @@ aside #docs_menu.docs_page li {
 }
 
 footer .social_links {
-  flex: 1
+  flex: 1;
 }
 
 footer a.social {

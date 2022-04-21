@@ -74,8 +74,8 @@ module.exports = function (eleventyConfig) {
     verbose: true,
     imageOptimization: true,
     dir: {
-      output: "../public",
-      outputDir: "../public/img"
+      output: "../../public",
+      outputDir: "../../public/img"
     }
   });
 
@@ -85,7 +85,7 @@ module.exports = function (eleventyConfig) {
     absolutePath,
     callback
   ) {
-    readFile(`../public${absolutePath}`, {
+    readFile(`../../public${absolutePath}`, {
       encoding: "utf-8",
     })
       .then((content) => {
@@ -171,7 +171,7 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       data: DATA_DIR,
       // Warning hardcoded throughout repo. Find and replace is your friend :)
-      output: "../public",
+      output: "../../public",
     },
   };
 };
