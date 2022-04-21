@@ -124,7 +124,7 @@
   "overrides": [
     {
       "files": [
-        "functions/test/**/*.ts"
+        "packages/functions/test/**/*.ts"
         ],
       "env": {
         "mocha": true
