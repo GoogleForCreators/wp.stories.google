@@ -5,17 +5,18 @@ layout: layouts/base.njk
 rootClass: docs
 ---
 
-{% set DOCS_BASE = '/docs/troubleshooting/troubleshooting-mode' %}
+{% set DOCS_BASE = '/docs/troubleshooting' %}
 
 <aside>
   <ul id="docs_menu" class="docs_flyout docs_page">
     <span>
       <li>Table of Contents</li>
       <ul id="toc">
-        <li><a href="{{ DOCS_BASE }}/#Installation">Installing the plugin</a></li>
-        <li><a href="{{ DOCS_BASE }}/#Troubleshooting">Turning on Troubleshooting Mode</a></li>
-        <li><a href="{{ DOCS_BASE }}/#Continue">Continuing troubleshooting as needed</a></li>
-        <li><a href="{{ DOCS_BASE }}/#Disabling">Disabling Troubleshooting Mode</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting-mode/#Installation">Installing the plugin</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting-mode/#Troubleshooting">Turning on Troubleshooting Mode</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting-mode/#Continue">Continuing troubleshooting as needed</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting-mode/#Disabling">Disabling Troubleshooting Mode</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting-mode/#Console">Finding console errors</a></li>
       </ul>
   </span>
   </ul>
@@ -164,6 +165,40 @@ rootClass: docs
     <p>
       <b>If your problem is not occurring after enabling a default theme</b>, it means that your theme is likely causing the issue.
       You can temporarily keep your theme disabled and reach out to your theme’s support for further assistance.
+    </p>
+
+    <h2 id="Console">Finding console errors</h2>
+
+    <p>
+      Console errors can provide a clue or even an explanation to the cause of issues in Web Stories. To check for console errors:
+    </p>
+
+    <ul class="real-ul">
+      <li>Navigate to where the issue is, for example the Web Stories Editor or your live Web Story</li>
+      <li>Open browser developer tools by tapping the <kbd>F12</kbd> key or right-clicking with your mouse and selecting <b>Inspect</b></li>
+      <li>Select the <b>Console</b> tab</li>
+      <li>Refresh your browser and check the Console section in the developer tools window</li>
+    </ul>
+
+    <p>
+      Any console errors will display in red. Not all console errors will be related to a Web Stories issue, but they can still be helpful when troubleshooting.
+    </p>
+
+    <h3>Sharing your console errors</h3>
+
+    <p>
+      The best way to share your console errors on the <a href="https://wordpress.org/support/plugin/web-stories/" rel="nofollow">Web Stories support forum</a> is by using screenshots.
+      You can do this by uploading the image to a service like <a href="https://imgur.com/" rel="nofollow">Imgur</a> or <a href="https://drive.google.com/">Google Drive</a>, then share the link in your forum topic.
+    </p>
+
+    <p>
+      An example console error when there is a CORS policy issue:
+    </p>
+
+    <p class="img-wrap"><amp-img layout="intrinsic" width="512" height="25" src="./img/docs/troubleshooting/troubleshooting-mode/console-error.png" alt="Screenshot of a console error in the browser developer console"></amp-img></p>
+
+    <p>
+      More information and troubleshooting steps regarding CORS issues can be found <a href="{{ DOCS_BASE }}/common-issues/#CORS-Check">here</a>.
     </p>
   </section>
 </main>
