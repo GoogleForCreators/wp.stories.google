@@ -14,9 +14,10 @@ rootClass: docs
       <ul id="toc">
         <li><a href="{{ DOCS_BASE }}/how-to/media/#Media">Inserting media</a></li>
         <li><a href="{{ DOCS_BASE }}/how-to/media/#Media3P">Third-Party Media Providers</a></li>
-        <li><a href="{{ DOCS_BASE }}/how-to/media/#Add-a-background-image-or-video">Adding a background image or video</a></li>
+        <li><a href="{{ DOCS_BASE }}/how-to/media/#Background-Image">Adding a background image or video</a></li>
         <li><a href="{{ DOCS_BASE }}/how-to/media/#Masking-cropping">Masking &amp; cropping</a></li>
         <li><a href="{{ DOCS_BASE }}/how-to/media/#Videos">Managing videos</a></li>
+        <li><a href="{{ DOCS_BASE }}/how-to/media/#Background-Audio">Adding background audio</a></li>
       </ul>
     </span>
   </ul>
@@ -67,7 +68,7 @@ rootClass: docs
       <amp-img layout="intrinsic" width="512" height="458" src="./img/docs/how-to/media3p-tab.png"></amp-img>
     </p>
 
-    <h2 id="Add-a-background-image-or-video">Add a background image or video</h2>
+    <h2 id="Background-Image">Add a background image or video</h2>
 
     <p>
       Add a background image or video by selecting an asset and dragging it into the background drop area. Drop targets are outlined in blue. You may alternatively click the "Set as background" option in the design panel after selecting an image.
@@ -227,6 +228,41 @@ rootClass: docs
 
     <p>
       If the Video Optimization feature is <b>disabled</b>, only <code>.webm</code> and <code>.mp4</code> videos are supported by default, as other types of videos are not supported by all browsers.
+    </p>
+
+    <h2 id="Background-Audio">Adding background audio</h2>
+
+    <p>
+      The Web Stories editor supports two types of audio:
+    </p>
+
+    <ul class="real-ul">
+      <li>
+        <b>Page-Level Background Audio</b><br/>
+        Plays on a single page, either only once or in a loop. Supports captions. Ideal for voiceovers / narration.
+      </li>
+      <li>
+        <b>Story-Level Background Audio</b><br/>
+        Plays across the whole story, even when there is additionale page-level background audio. Ideal for background music.
+      </li>
+    </ul>
+
+    <h3 id="Background-Audio-Captions">Adding captions</h3>
+
+    <p>
+      It is recommended to add captions to page-level background audio for improved user experience. Include captions by:
+    </p>
+
+    <ul class="real-ul">
+      <li>Formatting caption text in the required <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API">WebVTT file</a></li>
+      <li>Click on the page on the canvas</li>
+      <li>Open the "Page BAckground Audio" panel in the Style panel</li>
+      <li>Click the "Upload captions" button and select the WebVTT file from the WordPress Media Library, or insert an external file by pasting its URL</li>
+    </ul>
+
+    <p>
+      <b>Note:</b> Adding captions by linking to an external file requires <b>Cross-Origin Resource Sharing</b> (CORS) to be set up on the server where the file is hosted.
+      <a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#CORS-Check">Learn more about configuring CORS</a>.
     </p>
   </section>
 </main>

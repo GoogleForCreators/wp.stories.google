@@ -72,8 +72,8 @@ rootClass: docs
     <ul class="real-ul">
       <li>Formatting caption text in the required <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API">WebVTT file</a></li>
       <li>Select the video element on the canvas</li>
-      <li>Open the "Captions" drop down in the Design Panel</li>
-      <li>Click the "Upload captions" button and select the WebVTT file</li>
+      <li>Open the "Captions" panel in the Style panel</li>
+      <li>Click the "Upload captions" button and select the WebVTT file from the WordPress Media Library, or insert an external file by pasting its URL</li>
     </ul>
 
     <p class="img-wrap">
@@ -81,6 +81,11 @@ rootClass: docs
     </p>
 
     <p><b>Tip:</b> There are several tools and online services that allow you to create such WebVTT files, many of them are free.</p>
+
+    <p>
+      <b>Note:</b> Adding captions by linking to an external file requires <b>Cross-Origin Resource Sharing</b> (CORS) to be set up on the server where the file is hosted.
+      <a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#CORS-Check">Learn more about configuring CORS</a>.
+    </p>
 
     <h2 id="Avoiding-burned-in-text-on-assets">Avoiding ‘burned-in’ text on assets</h2>
     <p>
