@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
         with:
           ref: main
           lfs: true
@@ -19,7 +19,7 @@ jobs:
         run: git lfs checkout
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048 # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -44,7 +44,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website and downloaded stories
-        uses: calibreapp/image-actions@1.1.0
+        uses: calibreapp/image-actions@737ceeaeed61e17b8d358358a303f1b8d177b779 # v1.1.0
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
