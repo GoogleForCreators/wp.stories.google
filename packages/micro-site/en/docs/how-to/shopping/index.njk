@@ -1,0 +1,112 @@
+---
+title: Adding products - Web Stories for WordPress
+description: Add shoppable products from your online store directly to your stories with just a few clicks.
+layout: layouts/base.njk
+rootClass: docs
+---
+
+{% set DOCS_BASE = '/docs' %}
+
+<aside>
+  <ul id="docs_menu" class="docs_flyout docs_page">
+    <span>
+      <li>Table of Contents</li>
+      <ul id="toc">
+        <li><a href="{{ DOCS_BASE }}/how-to/workflow/#Introduction">Introduction</a></li>
+        <li><a href="{{ DOCS_BASE }}/how-to/workflow/#WooCommerce">Using WooCommerce</a></li>
+        <li><a href="{{ DOCS_BASE }}/how-to/workflow/#Shopify">Using Shopify</a></li>
+        <li><a href="{{ DOCS_BASE }}/how-to/workflow/#Others">Other Platforms</a></li>
+      </ul>
+    </span>
+  </ul>
+</aside>
+<main>
+  <section id="How-To">
+    <h1 id="Introduction">Adding Products</h1>
+
+    <p>
+      With the Web Stories editor for WordPress you can add products from your online store directly to stories.
+      Products will appear as tappable dots on your story that will show all the product information when opened.
+    </p>
+
+    <p>
+      The plugin currently supports <a href="https://woocommerce.com/" rel="nofollow">WooCommerce</a> and <a href="https://shopify.com/" rel="nofollow">Shopify</a> online stores.
+      To enable this feature and connect your online store, visit the Settings page and choose your platform:
+    </p>
+
+    <p class="img-wrap">
+      <amp-img layout="intrinsic" width="506" height="135" src="./img/docs/how-to/shopping-settings.png"></amp-img>
+    </p>
+
+    <p>
+      Afterwards, you will be able to add products from your store in the Shopping panel under the "Insert" tab.
+      Once you have added some products, you will notice that a new "Shop Now" call to action is automatically added to the page.
+    </p>
+
+    <p>
+      <b>Note:</b> We recommend not adding more than a handful of products on a single page.
+    </p>
+
+    <p class="img-wrap">
+      <amp-img layout="intrinsic" width="841" height="463" src="./img/docs/how-to/shopping-editor.png"></amp-img>
+    </p>
+
+    <p>
+      Under the "Style" tab you can later customize the appearance of the "Shop Now" call to action by changing the text and optionally switching to use a dark theme.
+    </p>
+
+    <p class="img-wrap">
+      <amp-img layout="intrinsic" width="842" height="465" src="./img/docs/how-to/shopping-customization.png"></amp-img>
+    </p>
+
+    <p>
+      When viewing your story, products appear as tappable dots that your readers can click on to learn more and go to the store.
+    </p>
+
+    <p class="img-wrap">
+      <amp-img layout="intrinsic" width="309" height="436" src="./img/docs/how-to/shopping-frontend-1.png"></amp-img>
+    </p>
+
+    <p class="img-wrap">
+      <amp-img layout="intrinsic" width="360" height="426" src="./img/docs/how-to/shopping-frontend-2.png"></amp-img>
+    </p>
+
+    <h2 id="WooCommerce">Using WooCommerce</h2>
+
+    <p>
+      For using WooCommerce with Web Stories, all you need to do is to activate the WooCommerce plugin and then select it as your desired platform on the Settings page. That's it!
+    </p>
+
+    <h2 id="Shopify">Using Shopify</h2>
+
+    <p>
+      To connect your Shopify store, you need to <a href="https://help.shopify.com/en/manual/apps/custom-apps" rel="nofollow">create a custom app</a>.
+      A custom app is an app that you or a developer builds exclusively for your Shopify store, which then allows you to access your store's data directly using Shopify's <b>Storefront API</b>.
+    </p>
+
+    <p>
+      <b>Note:</b> Creating a custom app requires development knowledge and can be challenging. If you need help creating custom apps for your store, reach out to a developer who can help you.
+    </p>
+
+    <p>Your custom app will need only the following Storefront API access scope: <code>unauthenticated_read_product_listings</code>.</p>
+
+    <p>After creating your custom app, you will need two things:</p>
+
+    <ol>
+      <li>The Storefront API access token, which can be found on your app's API credentials page</li>
+      <li>Your store URL, for example <code>yourstore.myshopify.com</code> (without <code>https://</code> or <code>www.</code>).</li>
+    </ol>
+
+    <p>
+      To verify your credentials, you can use the "Test connection" button on the Settings page.
+    </p>
+
+    <h2 id="Others">Other Platforms</h2>
+
+    <p>
+      The Web Stories WordPress plugin does not yet support other shopping platforms out of the box. However, other plugin developers can hook into the plugin to integrate with their own platform of choice.
+      Check out the <a href="https://github.com/googleforcreators/web-stories-wp">GitHub repository</a> for more information.
+    </p>
+
+  </section>
+</main>
