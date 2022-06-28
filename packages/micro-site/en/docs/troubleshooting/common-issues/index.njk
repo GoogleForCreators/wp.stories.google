@@ -5,15 +5,18 @@ layout: layouts/base.njk
 rootClass: docs
 ---
 
-{% set DOCS_BASE = '/docs/troubleshooting/common-issues' %}
+{% set DOCS_BASE = '/docs' %}
 
 <aside>
   <ul id="docs_menu" class="docs_flyout docs_page">
     <span>
       <li>Table of Contents</li>
       <ul id="toc">
-        <li><a href="{{ DOCS_BASE }}/#CORS-Check">CORS ("Unable to load media")</a></li>
-        <li><a href="{{ DOCS_BASE }}/#AMP-Validation">AMP validation</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#CORS-Check">CORS ("Unable to load media")</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#AMP-Validation">AMP validation</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#AdSense">AdSense ads not showing</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#Indexing">Stories not indexing</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#Blank">Blank Stories</a></li>
       </ul>
   </span>
   </ul>
@@ -77,10 +80,18 @@ rootClass: docs
     <p>In some cases, other WordPress plugins can interfere with stories and insert disallowed markup, causing AMP validation issues. Some examples of common AMP validation issues in stories:</p>
 
     <ul class="real-ul">
-      <li>Missing publisher logo</li>
-      <li>Missing poster image</li>
+      <li>
+        Missing publisher logo (<code>Missing URL for attribute 'publisher-logo-src' in tag 'amp-story'</code>)<br />
+        Configure a publisher logo for your story to resolve this.
+      </li>
+      <li>
+        Missing poster image (<code>Missing URL for attribute 'poster-portrait-src' in tag 'amp-story'</code><br />
+        Add a story poster image to resolve this.</li>
       <li>Mandatory tag missing</li>
-      <li>Custom JavaScript not allowed</li>
+      <li>
+        Custom JavaScript not allowed<br />
+        Typically caused by the theme or another plugin, for example performance-related plugins.
+      </li>
       <li><code>html !doctype'</code> is missing or incorrect</li>
     </ul>
 
@@ -112,5 +123,51 @@ rootClass: docs
       <li><a href="https://developers.google.com/search/docs/advanced/appearance/enable-web-stories" rel="noreferrer">Enable Web Stories on Google</a></li>
     </ul>
 
+    <h2 id="AdSense">AdSense ads not showing</h2>
+
+    <p>
+      The Web Stories plugin allows you to link your AdSense account to help you <a href="{{ DOCS_BASE }}/seo/#Monetization">monetize your stories</a>.
+      You will need to first activate your AdSense account to get the IDs needed. This can for example be done using the <a href="https://sitekit.withgoogle.com/">Site Kit by Google</a> WordPress plugin.
+    </p>
+
+    <p>
+      AdSense will determine where and how to insert ads into the story.
+      It can take some time before ads start to show, so it may just be a matter of waiting.
+      For further assistance on monetizing with Web Stories, visit the <a href="https://support.google.com/adsense/#topic=3373519" rel="noreferrer">AdSense Help Center</a>.
+    </p>
+
+    <h2 id="Indexing">Stories not being indexed</h2>
+
+    <p>
+      For indexing related questions we recommend checking the <a href="https://support.google.com/webmasters/#topic=9128571" rel="noreferrer">Search Console Help Center</a> which may help you find out why this may be happening.
+    </p>
+
+    <h2 id="Blank">Blank Stories</h2>
+
+    <p>
+      If you are seeing a blank page when viewing your Web Stories, this is likely a caching issue. This can be caused by:
+    </p>
+
+    <ul class="real-ul">
+      <li>
+        <b>Browser caching</b><br />
+        Try <a href="https://support.google.com/chrome/answer/2392709?hl=en">deleting your browsing data</a>.
+      </li>
+      <li>
+        <b>Server caching</b><br />
+        Depending on your website configuration and hosting provider, you can clear your website's cache in your hosting panel.
+      </li>
+      <li>
+        <b>Caching and optimization plugins</b><br />
+        There are a number of caching and optimization plugins available for WordPress so each will differ on how to clear the cache.
+        Here are a few guides for the most commonly used plugins:
+
+        <ul class="real-ul">
+          <li><a href="https://docs.wp-rocket.me/article/53-clear-wp-rocket-cache#:~:text=WP%20Rocket%20Cache-,Clear%20WP%20Rocket%20Cache,-If%20you%20need" rel="nofollow">WP Rocket</a></li>
+          <li><a href="https://docs.swiftperformance.io/knowledgebase/clear-cache/" rel="nofollow">Swift Performance</a></li>
+          <li><a href="https://support.ezoic.com/kb/article/how-does-ezoic-caching-app-work" rel="nofollow">Ezoic</a></li>
+        </ul>
+      </li>
+    </ul>
   </section>
 </main>
