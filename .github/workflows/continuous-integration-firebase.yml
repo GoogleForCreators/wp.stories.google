@@ -60,9 +60,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@276388dd6c2cde23455b30293105cc866c22282d # v0.6-alpha
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SA_KEY }}
-          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
-          channelId: live
+        uses: w9jds/firebase-action@9ec7761096e04c7578c72d1a11ef700a1292db4c # v2.2.0
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_SA_KEY }}
+          PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
