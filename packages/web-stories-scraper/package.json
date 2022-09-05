@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "sanitize-filename": "^1.6.3",
-    "website-scraper": "^5.2.0",
+    "website-scraper": "^5.3.0",
     "website-scraper-existing-directory": "^1.0.0"
   },
   "devDependencies": {}
