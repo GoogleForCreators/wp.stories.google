@@ -43,6 +43,7 @@ const links = [
   { url: '/docs/how-to/animations/' },
   { url: '/docs/how-to/media/' },
   { url: '/docs/how-to/workflow/' },
+  { url: '/docs/how-to/shopping/' },
   { url: '/docs/best-practices/' },
   { url: '/docs/seo/' },
   { url: '/docs/faq/' },
