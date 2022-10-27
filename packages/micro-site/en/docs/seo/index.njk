@@ -12,10 +12,11 @@ rootClass: docs
     <span>
       <li>Table of Contents</li>
       <ul id="toc">
-        <li><a href="{{ DOCS_BASE }}/seo/#Adding-necessary-metadata">Adding necessary metadata</a></li>
+        <li><a href="{{ DOCS_BASE }}/seo/#Adding-metadata">Adding metadata</a></li>
         <li><a href="{{ DOCS_BASE }}/seo/#Monetization">Monetize your stories</a></li>
-        <li><a href="{{ DOCS_BASE }}/seo/#Analytics">Adding Analytics</a></li>
-        <li><a href="{{ DOCS_BASE }}/seo/#Headings">Heading Tags</a></li>
+        <li><a href="{{ DOCS_BASE }}/seo/#Analytics">Adding analytics</a></li>
+        <li><a href="{{ DOCS_BASE }}/seo/#Headings">Heading tags</a></li>
+        <li><a href="{{ DOCS_BASE }}/seo/#Performance">PageSpeed Insights and Core Web Vitals</a></li>
       </ul>
     </span>
   </ul>
@@ -24,16 +25,16 @@ rootClass: docs
   <section id="SEO-Optimization">
     <h1>SEO &amp; Optimization</h1>
 
-    <h2 id="Adding-necessary-metadata">Adding metadata</h2>
+    <h2 id="Adding-metadata">Adding metadata</h2>
 
     <p>
-      Metadata can be attached to the Web Story from the Document tab in the sidebar, as well as directly before publishing.
-      This includes the poster image, author, and an excerpt or description.
-      Add these to ensure maximum compatibility with search engines and discovery features that take advantage of that metadata.
+      Metadata can be attached to the Web Story from the Document tab in the sidebar, and directly before publishing.
+      This metadata includes the poster image, author, and an excerpt or description.
+      Add thisinformation to ensure maximum compatibility with search engines and discovery features that take advantage of that metadata.
     </p>
 
     <p class="img-wrap">
-      <amp-img layout="intrinsic" width="559" height="300" src="./img/docs/seo/publish-modal.png"></amp-img>
+      <amp-img layout="intrinsic" width="559" height="300" src="./img/docs/seo/publish-modal.png" alt="A screenshot of the prepublish checklist modal displaying the metadata fields for poster image, author, and an excerpt or description."></amp-img>
     </p>
 
     <p>
@@ -42,114 +43,76 @@ rootClass: docs
 
     <h2 id="Monetization">Monetize your stories</h2>
     <p>
-      Make money off your Web Stories by automatically inserting ads between pages. You can enable the following supported integrations in your plugin's settings:
+      Make money off your Web Stories by automatically inserting ads between pages.
+      The Web Stories WordPress plugin supports both <a href="https://support.google.com/adsense/answer/10175505?hl=en">AdSense</a> and <a href="https://support.google.com/admanager/answer/9416436?hl=en">Ad Manager</a> integrations.
+      You can enable these integrations in on the plugin's settings page under "Monetization".
     </p>
-
-    <ul class="real-ul">
-      <li><a href="https://support.google.com/adsense/answer/10175505?hl=en">AdSense</a></li>
-      <li><a href="https://support.google.com/admanager/answer/9416436?hl=en">Ad Manager</a></li>
-    </ul>
 
     <p class="img-wrap">
-      <amp-img layout="intrinsic" width="1025" height="383" src="./img/docs/seo/monetization.png"></amp-img>
+      <amp-img layout="intrinsic" width="1025" height="383" src="./img/docs/seo/monetization.png" alt="A screenshot of the Web Stories Settings Monetization section highlighting Google AdSense configuration fields."></amp-img>
     </p>
 
-    <p>If you use the <a href="https://sitekit.withgoogle.com/">Site Kit by Google</a> WordPress plugin, you can set up Google AdSense there.</p>
+    <p><b>Tip:</b> If you use the <a href="https://sitekit.withgoogle.com/">Site Kit by Google</a> WordPress plugin, you can set up Google AdSense there.</p>
 
-    <h2 id="Analytics">Adding Analytics</h2>
+    <p>
+      Once you have configured ads, you're all set! Now, the Web Stories runtime will automatically determine where and how to insert ads into the story.
+    </p>
+
+    <p>
+      Note that it can take some time for ads to trickle in if you are using AdSense.
+      For further ad troubleshooting, use the <a href="https://support.google.com/adsense/workflow/10383839?hl=en">AdSense Ad Serving troubleshooter</a> and consult the <a href="https://support.google.com/adsense/?hl=en#topic=3373519">AdSense Help</a>.
+    </p>
+
+    <p>
+      If you are unable to access or modify the Monetization settings, please ensure that you have administrator capabilities on your site and that you are not using an ad blocker, as browser extensions hat block ads or privacy invasion trackers have been known to block these settings from displaying
+    </p>
+
+    <h2 id="Analytics">Adding analytics</h2>
 
     <p>
       There are two ways to include analytics in your Web Stories:
     </p>
 
     <ul class="real-ul">
-      <li>Add your Google Analytics tracking ID in the settings
+      <li>Add your Google Analytics tracking ID on the Web Stories settings page.
       <li>If you use the <a href="https://sitekit.withgoogle.com/">Site Kit by Google</a> WordPress plugin, you can set up Google Analytics there.</li>
     </ul>
 
-    <h3>What is the "improved analytics configuration"?</h3>
+    <p>
+      Note that creating a new property for Web Stories is not necessary.
+      Web Stories uses the same site URL as the rest of your site, so you can apply the same property.
+    </p>
 
     <p>
-      Up until version 1.12.0, Web Stories for WordPress used a custom analytics configuration with a custom set of events.
-      Starting in version 1.13.0, we changed the default analytics configuration to a streamlined, <a href="https://amp.dev/documentation/components/amp-story-auto-analytics/">recommended preset</a> with fewer events.
-      Existing users will continue to use the previous configuration unless opted-in by clicking the "Migrate" button.
-      The specific changes are listed in the table below.
+      By default, the Web Stories WordPress plugin uses a <a href="https://amp.dev/documentation/components/amp-story-auto-analytics/">recommended preset</a> with a few select analytics events:
     </p>
 
     <table>
       <tr>
-        <th scope="col">Before v1.13</th>
-        <th scope="col">v1.13 and later</th>
+        <th scope="col">Trigger</th>
         <th scope="col">Description</th>
       </tr>
       <tr>
-        <td data-label="Before">N/A</td>
         <td data-label="New"><code>story_page_count</code></td>
         <td data-label="Description">Fired once per story view. Parameters: the story title and number of pages.</td>
       </tr>
       <tr>
-        <td data-label="Before"><code>story_progress</code></td>
         <td data-label="New"><code>story_pages_viewed</code></td>
         <td data-label="Description">Fired when a story page becomes visible. Parameters: the story title and viewed page index.</td>
       </tr>
       <tr>
-        <td data-label="Before"><code>story_complete</code></td>
         <td data-label="New"><code>story_complete</code></td>
         <td data-label="Description">Fired when the last story page displays to the user (can be used to measure completion rate). Parameters: the story title.</td>
       </tr>
-      <tr>
-        <td data-label="Before"><code>story_focus</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when clicking an element that opens a tooltip such as an <code>{{ "<a>" | escape }}</code> link or twitter embed.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_click_through</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when clicking on a tooltip.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_open</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when opening a drawer or dialog inside a story, such as a page attachment.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_close</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when closing a drawer or dialog inside a story, such as a page attachment.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_audio_muted</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when the user initiates an interaction to mute the audio for the current story.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_audio_unmuted</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when the user initiates an interaction to unmute the audio for the current story.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_page_attachment_enter</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when a user opens a page attachment.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_page_attachment_exit</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when a user closes a page attachment.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_bookend_enter</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when the story displays the bookend to the user, after the last page of the current story.</td>
-      </tr>
-      <tr>
-        <td data-label="Before"><code>story_bookend_exit</code></td>
-        <td data-label="New">(Removed)</td>
-        <td data-label="Description">Fired when the user dismisses the bookend.</td>
-      </tr>
     </table>
 
-    <h2 id="Headings">Heading Tags</h2>
+    <p>
+      Check out the Google for Creators guide on <a href="https://blog.google/google-for-creators/use-these-tools-boost-web-stories-performance/">how to viewing your Web Stories performance</a> in Google Analytics and Data Studio.
+    </p>
+
+    <amp-youtube data-videoid="wRdQ15IL8dk" layout="responsive" width="480" height="270"></amp-youtube>
+
+    <h2 id="Headings">Heading tags</h2>
 
     <p>
       When creating a web page, heading tags can be used to <a href="https://developers.google.com/search/docs/beginner/seo-starter-guide?hl=en#headingtags">emphasize important text</a>.
@@ -164,6 +127,28 @@ rootClass: docs
 
     <p class="img-wrap">
       <amp-img layout="intrinsic" width="353" height="194" src="./img/docs/seo/heading-levels.png"></amp-img>
+    </p>
+
+    <h2 id="Performance">PageSpeed Insights and Core Web Vitals</h2>
+
+    <p>
+      Google’s <a href="https://pagespeed.web.dev/">PageSpeed Insights</a> and <a href="https://support.google.com/webmasters/answer/9205520?hl=en">Core Web Vitals report</a> may make recommendations on how to improve the performance of your overall site, including Web Stories.
+      While these recommendations are not specific to Web Stories, you can use the following suggestions to identify next steps.
+    </p>
+
+    <h3>Reduce initial server  response time</h3>
+
+    <p>
+      This recommendation indicates that your site’s server is not responding quickly when a user tries to load your website.
+      Response time can be improved by ensuring that your site is well-optimized, which can be done with caching plugins or other options for hosting-provided resources, such as setting up a Content Delivery Network (CDN).
+    </p>
+
+    <p>
+      You can improve load times specifically for Web Stories by enabling the Video Cache option in Web Stories > Settings > Video Cache and using modern image formats such as WebP for your images.
+    </p>
+
+    <p>
+      Questions about Core Web Vitals reports are generally better suited for the product experts in the <a href="https://support.google.com/webmasters/community/">Google Search Central Help Community</a> forums, as they go beyond our support offering for the Web Stories WordPress plugin.
     </p>
   </section>
 </main>

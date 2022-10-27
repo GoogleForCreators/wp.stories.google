@@ -17,6 +17,7 @@ rootClass: docs
         <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#AdSense">AdSense ads not showing</a></li>
         <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#Indexing">Stories not indexing</a></li>
         <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#Blank">Blank Stories</a></li>
+        <li><a href="{{ DOCS_BASE }}/troubleshooting/common-issues/#Crawling-Indexing-Traffic">Crawling, Indexing, Traffic</a></li>
       </ul>
   </span>
   </ul>
@@ -77,27 +78,81 @@ rootClass: docs
       This allows the story to be served via the AMP cache and ensures performance and the best experience for your users.
     </p>
 
-    <p>In some cases, other WordPress plugins can interfere with stories and insert disallowed markup, causing AMP validation issues. Some examples of common AMP validation issues in stories:</p>
+    <p>
+      In some cases, other WordPress plugins can interfere with stories and insert disallowed markup, causing AMP validation issues.
+      Here is a collection of some common AMP validation issues in stories
+    </p>
+
+    <h3>Missing URL for attribute <code>'publisher-logo-src'</code> in tag <code>'amp-story'</code></h3>
+
+    <p>
+      This error is a result of a missing poster image in the story and can be resolved by adding a story poster image to your story.
+      You can do so in the editor under the "Document" tab.
+    </p>
+
+    <h3>Missing URL for attribute <code>'poster-portrait-src'</code> in tag <code>'amp-story'</code></h3>
+
+    <p>
+      This error is a result of a missing publisher logo in the story and can be resolved by adding a publisher logo to your story.
+      You can do so in the editor under the "Document" tab. You can also manage all your publisher logos on the Settings page.
+    </p>
+
+    <h3>Custom JavaScript is not allowed</h3>
+
+    <p>
+      This error usually occurs when you are using a plugin that minifies your site's JavaScript or adds custom JavaScript to pages, which is not allowed in Web Stories.
+      One way to confirm and address this is by (temporarily) excluding Web Stories from minification in your caching plugin.
+      We’ve added exclusions which can be applied for some popular caching plugins below:
+    </p>
 
     <ul class="real-ul">
       <li>
-        Missing publisher logo (<code>Missing URL for attribute 'publisher-logo-src' in tag 'amp-story'</code>)<br />
-        Configure a publisher logo for your story to resolve this.
+        <b>WP Rocket:</b> Advanced Rules > Never Cache URL(s) > Specify URLs of pages or posts that should never be cached (one per line): <code>/web-stories/(.*)</code>
       </li>
       <li>
-        Missing poster image (<code>Missing URL for attribute 'poster-portrait-src' in tag 'amp-story'</code><br />
-        Add a story poster image to resolve this.</li>
-      <li>Mandatory tag missing</li>
-      <li>
-        Custom JavaScript not allowed<br />
-        Typically caused by the theme or another plugin, for example performance-related plugins.
+        <b>Swift Performance:</b> Swift Performance settings > Caching > Exceptions > Exclude URLs: <code>/web-stories/(*)</code>
       </li>
-      <li><code>html !doctype'</code> is missing or incorrect</li>
+      <li>
+        <b>LiteSpeed Cache:</b> Cache > LiteSpeed Cache Settings > Page Optimization > [7 Tuning] > URI Excludes> exclude all scripts from: <code>wp-content/plugins/web-stories</code>
+      </li>
     </ul>
 
-    <p>After you've developed the story, make sure the Web Story is valid AMP. A valid AMP story is one that adheres to various AMP specifications.  You can use the following tools ensure that your Web Story is valid AMP:</p>
+    <h3>A mandatory AMP HTML tag is missing from this document</h3>
 
-    <h3>Web Stories Google Test Tool</h3>
+    <p>
+      This error is most likely a result of a plugin modifying the story's HTML output in an incorrect way.
+      Follow our <a href="{{ DOCS_BASE }}/troubleshooting-mode/#Troubleshooting">Site Troubleshooting guide</a> to determine if your theme or one of your plugins is causing this issue.
+    </p>
+
+    <h3>The parent tag of tag <code>‘html’</code> is <code>‘$root’</code>, but it can only be <code>‘!doctype’.</code></h3>
+
+    <p>
+      This error is most likely a result of a plugin modifying the story's HTML output in an incorrect way.
+      Follow our <a href="{{ DOCS_BASE }}/troubleshooting-mode/#Troubleshooting">Site Troubleshooting guide</a> to determine if your theme or one of your plugins is causing this issue.
+    </p>
+
+    <p>
+      Often times, this happens because of an ads plugin, so you can check if temporarily deactivating such a plugin resolves the issue.
+      If it does, it is best to contact their support for further assistance.
+    </p>
+
+    <h3>The mandatory tag <code>‘html !doctype’</code> is missing or incorrect.</h3>
+
+    <p>
+      This error is most likely a result of a plugin stripping the mandatory AMP HTML tag.
+      Follow our <a href="{{ DOCS_BASE }}/troubleshooting-mode/#Troubleshooting">Site Troubleshooting guide</a> to determine if your theme or one of your plugins is causing this issue.
+    </p>
+
+    <h3>A tag on this page requires an AMP component ‘script’ tag, which is missing.</h3>
+
+    <p>
+      This error is most likely a result of a plugin modifying the story's HTML output in an incorrect way.
+      Follow our <a href="{{ DOCS_BASE }}/troubleshooting-mode/#Troubleshooting">Site Troubleshooting guide</a> to determine if your theme or one of your plugins is causing this issue.
+    </p>
+
+    <h3>Web Stories Test Tool</h3>
+
+    <p>After you've developed the story, make sure the Web Story is valid AMP. A valid AMP story is one that adheres to various AMP specifications. You can use the following tools ensure that your Web Story is valid AMP:</p>
 
     <p>
       The <a href="https://search.google.com/test/amp" rel="noreferrer">Web Stories Test Tool</a> allows you to check that the Web Story is valid.
@@ -169,5 +224,30 @@ rootClass: docs
         </ul>
       </li>
     </ul>
+
+    <h2 id="Crawling-Indexing-Traffic">Crawling, Indexing, and Traffic Inquiries</h2>
+
+    <p>
+      Crawling and indexing are processes that can take some time and rely on many factors.
+      In general, we cannot make predictions or guarantees about when or if your URLs will be crawled or indexed.
+      Use Search Console’s various tools to see if your content is properly <a href="https://support.google.com/webmasters/answer/9012289?hl=en">crawled and indexed</a>.
+    </p>
+
+    <p>
+      There may be several factors affecting why the traffic has decreased for your Web Stories.
+      Spikes and declines in traffic are not unusual as Google Search is constantly improving its algorithms, which can affect ranking.
+      To ensure that you are set up successfully for receiving traffic and ranking:
+    </p>
+
+    <ul class="real-ul">
+      <li>Ensure that you have valid Web Stories by testing your Story URLs in the <a href="https://search.google.com/test/amp">Web Stories Test Tool</a>.</li>
+      <li>Link to or embed stories within pages and posts on your site.</li>
+      <li>Following the recommendations from the pre-publish checklist in the editor.</li>
+      <li>Follow our <a href="https://developers.google.com/search/docs/advanced/appearance/web-stories-creation-best-practices">best practices for creating Web Stories</a> and the <a href="https://developers.google.com/search/docs/advanced/appearance/web-stories-content-policy">Web Stories content policy</a></li>
+    </ul>
+
+    <p>
+      For questions about search rankings and traffic, please consult <a href="https://support.google.com/webmasters/community?hl=en">Google Search Central</a>.
+    </p>
   </section>
 </main>

@@ -797,7 +797,7 @@ aside #docs_menu.docs_page li {
 
 @media screen and (min-width: 1280px) {
   .docs main h1 {
-    font-size: 4.875rem;
+    font-size: 4.5rem;
   }
 
   .docs main h2 {
@@ -885,7 +885,7 @@ footer .social_links.links li:after {
 
 @media screen and (max-width: 1280px) {
   html {
-    font-size: 14px
+    font-size: 16px
   }
 
   #templates_screenshot {

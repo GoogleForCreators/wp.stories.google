@@ -44,6 +44,7 @@ const links = [
   { url: '/docs/how-to/media/' },
   { url: '/docs/how-to/workflow/' },
   { url: '/docs/how-to/shopping/' },
+  { url: '/docs/how-to/taxonomies/' },
   { url: '/docs/best-practices/' },
   { url: '/docs/seo/' },
   { url: '/docs/faq/' },
