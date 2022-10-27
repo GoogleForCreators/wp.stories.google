@@ -158,8 +158,10 @@ class WebStoriesScraperPlugin {
 
     // Prevent saving 404 pages.
     registerAction('afterResponse', ({ response }) => {
-      if (response.statusCode === 404) {
-        console.log(`Error 404! Could not download ${response.request.href}.`);
+      if (!response.statusCode.toString().startsWith('20')) {
+        console.log(
+          `Error ${response.statusCode}! Could not download ${response.url}.`
+        );
         return null;
       }
 
@@ -325,6 +327,17 @@ class WebStoriesScraperPlugin {
 
 const options = {
   urls: [url],
+  request: {
+    headers: {
+      'user-agent': 'wp.stories.google scraper',
+    },
+    throwHttpErrors: false,
+    retry: {
+      limit: 2,
+      methods: ['GET'],
+      statusCodes: [504],
+    },
+  },
   directory,
   sources: [
     { selector: 'amp-story', attr: 'publisher-logo-src' },
