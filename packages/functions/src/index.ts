@@ -35,7 +35,7 @@ export const handleCdnRequests = functions
     functions.logger.info('Serving for requested path', request.path);
 
     // "/static/123/images/path/to/image.png" => "123", "images/path/to/image.png".
-    const match = request.path.match(/static\/(main|\d+)\/(.*)/);
+    const match = request.path.match(/static\/(main|\d+)\/(.+)/);
 
     if (!match) {
       response.status(404).send();
@@ -50,11 +50,11 @@ export const handleCdnRequests = functions
       functions.logger.info('Latest version from .env file:', latestVersion);
 
       if (latestVersion) {
-        response.redirect(`${BUCKET_URL}/${latestVersion}/${fileName}`, 302);
+        response.redirect(302, `${BUCKET_URL}/${latestVersion}/${fileName}`);
         return;
       }
     } else {
-      response.redirect(`${BUCKET_URL}/${version}/${fileName}`, 302);
+      response.redirect(302, `${BUCKET_URL}/${version}/${fileName}`);
       return;
     }
 

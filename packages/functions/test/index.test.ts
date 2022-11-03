@@ -24,7 +24,7 @@ describe('handleCdnRequests', () => {
   });
 
   it('returns 404 if there is no match', (done) => {
-    const req = { path: '/soem/other/path' };
+    const req = { path: '/some/other/path' };
     const res = {
       status: (code) => {
         assert.equal(code, 404);
@@ -38,7 +38,7 @@ describe('handleCdnRequests', () => {
   it('redirects specific versions as-is', (done) => {
     const req = { path: '/static/123/foo/bar' };
     const res = {
-      redirect: (url, code) => {
+      redirect: (code, url) => {
         assert.equal(code, 302);
         assert.equal(url, `${BUCKET_URL}/123/foo/bar`);
         done();
@@ -52,7 +52,7 @@ describe('handleCdnRequests', () => {
     process.env.LATEST_ASSETS_VERSION = '456';
     const req = { path: '/static/main/foo/bar' };
     const res = {
-      redirect: (url, code) => {
+      redirect: (code, url) => {
         assert.equal(code, 302);
         assert.equal(url, `${BUCKET_URL}/456/foo/bar`);
         done();
@@ -64,6 +64,19 @@ describe('handleCdnRequests', () => {
 
   it('returns 404 if there is no latest version', (done) => {
     const req = { path: '/static/main/foo/bar' };
+    const res = {
+      status: (code) => {
+        assert.equal(code, 404);
+        done();
+      },
+    };
+
+    handleCdnRequests(req, res);
+  });
+
+  it('returns 404 if no path is specified', (done) => {
+    process.env.LATEST_ASSETS_VERSION = '456';
+    const req = { path: '/static/main/' };
     const res = {
       status: (code) => {
         assert.equal(code, 404);
