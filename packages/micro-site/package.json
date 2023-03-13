@@ -16,7 +16,7 @@
     "hasha": "^5.2.0",
     "html-minifier": "^4.0.0",
     "image-size": "^1.0.2",
-    "jsdom": "^21.1.0",
+    "jsdom": "^21.1.1",
     "purge-from-html": "^1.0.3",
     "purgecss": "^5.0.0",
     "sharp": "^0.31.3",
