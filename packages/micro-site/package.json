@@ -23,7 +23,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0",
+    "@11ty/eleventy": "^2.0.1",
     "luxon": "^3.3.0"
   },
   "peerDependencies": {
