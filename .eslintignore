@@ -1,5 +1,5 @@
 node_modules
-/public
 package.json
 package-lock.json
-/functions/lib
+packages/functions/lib
+public

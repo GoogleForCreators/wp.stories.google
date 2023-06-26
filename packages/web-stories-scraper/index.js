@@ -55,6 +55,9 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
       'UA-174115079-1': {
         groups: 'default',
       },
+      'G-00TYVDPM89': {
+        groups: 'default',
+      },
     },
   },
   triggers: {
@@ -65,7 +68,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_action: 'story_progress',
         event_category: '${title}',
         event_label: '${storyProgress}',
-        send_to: ['UA-174115079-1'],
+        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
       },
     },
     storyEnd: {
@@ -74,7 +77,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_name: 'custom',
         event_action: 'story_complete',
         event_category: '${title}',
-        send_to: ['UA-174115079-1'],
+        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
       },
     },
     storyPageCount: {
@@ -84,7 +87,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_action: 'story_page_count',
         event_category: '${title}',
         event_label: '${storyPageCount}',
-        send_to: ['UA-174115079-1'],
+        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
       },
     },
     storyPageIndex: {
@@ -94,7 +97,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_action: 'story_pages_viewed',
         event_category: '${title}',
         event_label: '${storyPageIndex}',
-        send_to: ['UA-174115079-1'],
+        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
       },
     },
   },

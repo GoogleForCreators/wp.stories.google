@@ -34,12 +34,6 @@
     {% endif %}
 
     <link rel="canonical" href="{{ metadata.url }}{{ canonicalUrl or page.url }}">
-    <!-- This is a blog and so it SHOULD be safe and it is nice for the web
-         to send referrers cross-origin.
-         However, if you use sensitive data in URLs, consider changing this to
-         a value like `origin-when-cross-origin`
-         https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-          -->
     <meta name="referrer" content="no-referrer-when-downgrade">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
 
@@ -52,7 +46,7 @@
   <body>
   {% for propertyId in googleanalytics %}
   <amp-analytics  type="gtag" data-credentials="include">
-    <script type="application/json">{"vars": {"config": {"{{ propertyId }}": {"groups": "default"}}, "gtag_id": "{{ propertyId }}"}}</script>
+    <script type="application/json">{"vars": {"config": {"{{ propertyId }}": {"groups": "default"}, "G-00TYVDPM89": {"groups":  "default"}}, "gtag_id": "{{ propertyId }}"}}</script>
   </amp-analytics>
   {% endfor %}
 
