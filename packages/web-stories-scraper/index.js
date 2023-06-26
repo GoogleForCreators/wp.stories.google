@@ -50,9 +50,9 @@ const PUBLISHER_NAME = 'Google for Creators';
 /* eslint-disable no-template-curly-in-string */
 const ADDITIONAL_ANALYTICS_CONFIG = {
   vars: {
-    gtag_id: 'UA-174115079-1',
+    gtag_id: 'UA-168571240-2',
     config: {
-      'UA-174115079-1': {
+      'UA-168571240-2': {
         groups: 'default',
       },
       'G-00TYVDPM89': {
@@ -68,7 +68,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_action: 'story_progress',
         event_category: '${title}',
         event_label: '${storyProgress}',
-        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
+        send_to: ['UA-168571240-2', 'G-00TYVDPM89'],
       },
     },
     storyEnd: {
@@ -77,7 +77,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_name: 'custom',
         event_action: 'story_complete',
         event_category: '${title}',
-        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
+        send_to: ['UA-168571240-2', 'G-00TYVDPM89'],
       },
     },
     storyPageCount: {
@@ -87,7 +87,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_action: 'story_page_count',
         event_category: '${title}',
         event_label: '${storyPageCount}',
-        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
+        send_to: ['UA-168571240-2', 'G-00TYVDPM89'],
       },
     },
     storyPageIndex: {
@@ -97,7 +97,7 @@ const ADDITIONAL_ANALYTICS_CONFIG = {
         event_action: 'story_pages_viewed',
         event_category: '${title}',
         event_label: '${storyPageIndex}',
-        send_to: ['UA-174115079-1', 'G-00TYVDPM89'],
+        send_to: ['UA-168571240-2', 'G-00TYVDPM89'],
       },
     },
   },
