@@ -45,7 +45,7 @@ if (!existsSync(directory)) {
 
 const WEBSITE_LOCATION = 'https://wp.stories.google/stories/';
 
-const PUBLISHER_NAME = 'Google Web Creators';
+const PUBLISHER_NAME = 'Google for Creators';
 
 /* eslint-disable no-template-curly-in-string */
 const ADDITIONAL_ANALYTICS_CONFIG = {
