@@ -51,7 +51,7 @@ jobs:
 
       - name: Download Web Stories
         run: |
-          gcloud storage cp "$BUCKET/stories" public/stories --recursive
+          gcloud storage cp "$BUCKET/stories" ./public/stories --recursive
         env:
           BUCKET: ${{ secrets.FIREBASE_BUCKET_NAME }}
 
