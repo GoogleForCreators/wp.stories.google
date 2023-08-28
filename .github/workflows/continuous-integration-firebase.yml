@@ -59,7 +59,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website and downloaded stories
-        uses: calibreapp/image-actions@d2e02864374c46909d2627c7f18bcb9d9384d054 # latest main from July 30, 2023.
+        uses: calibreapp/image-actions@456fd267b538d2fc9287d1fa1dce68237d8a331a # latest main from July 30, 2023.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
