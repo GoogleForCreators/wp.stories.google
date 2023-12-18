@@ -25,7 +25,7 @@ jobs:
         run: git lfs checkout
 
       - name: Setup Node
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v3.2.0
+        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -59,7 +59,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website and downloaded stories
-        uses: calibreapp/image-actions@456fd267b538d2fc9287d1fa1dce68237d8a331a # latest main from July 30, 2023.
+        uses: calibreapp/image-actions@3aaa21102e945bf6e141229fad82ab8eee6ef49d # latest main from July 30, 2023.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@44fa43b535aa771ad765a4a9f44b55dca0dcc0bd # v2.2.0
+        uses: w9jds/firebase-action@930644b186dec23117e7a9e09964b67b8ef4f5a8 # v2.2.0
         with:
           args: deploy
         env:
