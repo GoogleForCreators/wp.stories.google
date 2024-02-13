@@ -25,7 +25,7 @@ jobs:
         run: git lfs checkout
 
       - name: Setup Node
-        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v3.2.0
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@85564c3460ecf6caa7e3b09f1c318811b3d0f0b7 # v2.2.0
+        uses: w9jds/firebase-action@6d5ac53f1a0989f582b109d771a711ef8dca5344 # v2.2.0
         with:
           args: deploy
         env:
