@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v3.0.2
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v3.0.2
         with:
           ref: main
           lfs: true
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@f273e2e1a5843672609dea7d36ce4c73407c50a5 # v2.2.0
+        uses: w9jds/firebase-action@f1914ae3b9a82721be5598eb6f8789c6a8881d98 # v2.2.0
         with:
           args: deploy
         env:
