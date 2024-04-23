@@ -10,7 +10,7 @@
     "test": "ts-mocha --reporter spec"
   },
   "engines": {
-    "node": "16"
+    "node": "20"
   },
   "main": "lib/index.js",
   "dependencies": {
