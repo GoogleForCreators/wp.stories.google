@@ -19,8 +19,7 @@
     "jsdom": "^24.0.0",
     "purge-from-html": "^1.0.3",
     "purgecss": "^6.0.0",
-    "sharp": "^0.33.3",
-    "twitter": "^1.7.1"
+    "sharp": "^0.33.3"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
