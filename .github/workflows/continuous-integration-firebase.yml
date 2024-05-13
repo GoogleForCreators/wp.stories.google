@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@02a5e1424541fcfb7a80589d863dcb6cf32544ef # v2.2.0
+        uses: w9jds/firebase-action@0e573de40e282d9738734652813a82b6d73ea8ad # v2.2.0
         with:
           args: deploy
         env:
