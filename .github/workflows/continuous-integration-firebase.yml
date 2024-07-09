@@ -59,7 +59,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website and downloaded stories
-        uses: calibreapp/image-actions@790ef463cba7b26ed3b1c80c1449deb72d4c0bcc # latest main from July 30, 2023.
+        uses: calibreapp/image-actions@80b3ba2b30cc4d1935d24959841821cf324f23ab # latest main from July 30, 2023.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@6dbf6f5d88bb1b2ef547d6d2cc265d6981226c1a # v2.2.0
+        uses: w9jds/firebase-action@3692c2547a3623fc802d9ffd2a22130c6abcaf02 # v2.2.0
         with:
           args: deploy
         env:
