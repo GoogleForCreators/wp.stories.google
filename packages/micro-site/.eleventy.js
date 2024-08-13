@@ -40,94 +40,96 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { DateTime } = require("luxon");
-const { promisify } = require("util");
-const fs = require("fs");
-const hasha = require("hasha");
-const readFile = promisify(require("fs").readFile);
-const CleanCSS = require("clean-css");
-const Nunjucks = require("nunjucks");
-const DATA_DIR = "_data";
+const { DateTime } = require('luxon');
+const { promisify } = require('util');
+const fs = require('fs');
+const hasha = require('hasha');
+const readFile = promisify(require('fs').readFile);
+const CleanCSS = require('clean-css');
+const Nunjucks = require('nunjucks');
+const DATA_DIR = '_data';
 const ampPlugin = require('@ampproject/eleventy-plugin-amp');
 
 module.exports = function (eleventyConfig) {
   let nunjucksEnvironment = new Nunjucks.Environment(
-    new Nunjucks.FileSystemLoader("_includes")
+    new Nunjucks.FileSystemLoader('_includes')
   );
 
-  nunjucksEnvironment.addGlobal('$', function(str) {
+  nunjucksEnvironment.addGlobal('$', function (str) {
     const context = this.ctx;
 
     const locale = context.page.filePathStem.split('/')[1];
 
     try {
-      const dict = JSON.parse(fs.readFileSync(`${DATA_DIR}/${locale}/${locale}.json`));
-      return new Nunjucks.runtime.SafeString(dict[str] || str)
-    } catch (e) {
-      return new Nunjucks.runtime.SafeString(str)
+      const dict = JSON.parse(
+        fs.readFileSync(`${DATA_DIR}/${locale}/${locale}.json`)
+      );
+      return new Nunjucks.runtime.SafeString(dict[str] || str);
+    } catch {
+      return new Nunjucks.runtime.SafeString(str);
     }
   });
 
-  eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+  eleventyConfig.setLibrary('njk', nunjucksEnvironment);
 
   eleventyConfig.addPlugin(ampPlugin, {
     verbose: true,
     imageOptimization: true,
     dir: {
-      output: "../../public",
-      outputDir: "../../public/img"
-    }
+      output: '../../public',
+      outputDir: '../../public/img',
+    },
   });
 
-  eleventyConfig.addPlugin(require("./_11ty/optimize-html.js"));
+  eleventyConfig.addPlugin(require('./_11ty/optimize-html.js'));
   eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.addNunjucksAsyncFilter("addHash", function (
-    absolutePath,
-    callback
-  ) {
-    readFile(`../../public${absolutePath}`, {
-      encoding: "utf-8",
-    })
-      .then((content) => {
-        return hasha.async(content);
+  eleventyConfig.addNunjucksAsyncFilter(
+    'addHash',
+    function (absolutePath, callback) {
+      readFile(`../../public${absolutePath}`, {
+        encoding: 'utf-8',
       })
-      .then((hash) => {
-        callback(null, `${absolutePath}?hash=${hash.substr(0, 10)}`);
-      })
-      .catch((error) => callback(error));
-  });
+        .then((content) => {
+          return hasha.async(content);
+        })
+        .then((hash) => {
+          callback(null, `${absolutePath}?hash=${hash.substr(0, 10)}`);
+        })
+        .catch((error) => callback(error));
+    }
+  );
 
-  eleventyConfig.addFilter("lastModifiedDate", function (filename) {
+  eleventyConfig.addFilter('lastModifiedDate', function (filename) {
     const stats = fs.statSync(filename);
     return stats.mtime; // Date
   });
 
-  eleventyConfig.addFilter("encodeURIComponent", function (str) {
+  eleventyConfig.addFilter('encodeURIComponent', function (str) {
     return encodeURIComponent(str);
   });
 
-  eleventyConfig.addFilter("cssmin", function (code) {
+  eleventyConfig.addFilter('cssmin', function (code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
-  eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
-      "dd LLL yyyy"
+  eleventyConfig.addFilter('readableDate', (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
+      'dd LLL yyyy'
     );
   });
 
-  eleventyConfig.addNunjucksAsyncFilter("_", (what) => {
+  eleventyConfig.addNunjucksAsyncFilter('_', (what) => {
     console.log(what);
-    return what
+    return what;
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
+  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
   });
 
   // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
+  eleventyConfig.addFilter('head', (array, n) => {
     if (n < 0) {
       return array.slice(n);
     }
@@ -135,21 +137,21 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
-  eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("video");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("fonts");
+  eleventyConfig.addPassthroughCopy('img');
+  eleventyConfig.addPassthroughCopy('video');
+  eleventyConfig.addPassthroughCopy('css');
+  eleventyConfig.addPassthroughCopy('fonts');
 
   // We need to rebuild upon JS change to update the CSP.
-  eleventyConfig.addWatchTarget("./js/");
+  eleventyConfig.addWatchTarget('./js/');
   // We need to rebuild on CSS change to inline it.
-  eleventyConfig.addWatchTarget("./css/");
+  eleventyConfig.addWatchTarget('./css/');
   // Unfortunately this means .eleventyignore needs to be maintained redundantly.
   // But without this the JS build artefacts doesn't trigger a build.
   eleventyConfig.setUseGitIgnore(false);
 
   return {
-    templateFormats: ["njk", "html"],
+    templateFormats: ['njk', 'html'],
 
     // If your site lives in a different subdirectory, change this.
     // Leading or trailing slashes are all normalized away, so don’t worry about those.
@@ -161,17 +163,17 @@ module.exports = function (eleventyConfig) {
     // You can also pass this in on the command line using `--pathprefix`
     // pathPrefix: "/",
 
-    markdownTemplateEngine: "liquid",
-    htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
+    markdownTemplateEngine: 'liquid',
+    htmlTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
 
     // These are all optional, defaults are shown:
     dir: {
-      input: ".",
-      includes: "_includes",
+      input: '.',
+      includes: '_includes',
       data: DATA_DIR,
       // Warning hardcoded throughout repo. Find and replace is your friend :)
-      output: "../../public",
+      output: '../../public',
     },
   };
 };
