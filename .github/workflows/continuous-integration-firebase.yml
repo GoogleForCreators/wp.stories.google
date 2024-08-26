@@ -40,7 +40,7 @@ jobs:
         run: cd packages/functions && npm run test test/**.test.ts
 
       - name: Authenticate
-        uses: google-github-actions/auth@f112390a2df9932162083945e46d439060d66ec2
+        uses: google-github-actions/auth@62cf5bd3e4211a0a0b51f2c6d6a37129d828611d
         with:
           credentials_json: ${{ secrets.FIREBASE_SA_KEY }}
 
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@0b03ce9402a4ad3161b14ab294c2db05b0457416 # v2.2.0
+        uses: w9jds/firebase-action@40b6ef41b5fe72c66569d94611a082c4a0a89ef1 # v2.2.0
         with:
           args: deploy
         env:
