@@ -58,12 +58,12 @@ jobs:
       - name: Build website
         run: cd packages/micro-site && npm run build
 
-      - name: Compress images for website and downloaded stories
-        uses: calibreapp/image-actions@80b3ba2b30cc4d1935d24959841821cf324f23ab # latest main from July 30, 2023.
+      - name: Compress images for website
+        uses: calibreapp/image-actions@80b3ba2b30cc4d1935d24959841821cf324f23ab # latest main from July 2, 2024.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
-          ignorePaths: 'node_modules/**,micro-site/**,public/static/**'
+          ignorePaths: 'node_modules/**,packages/micro-site/**,public/static/**,public/e2e-tests/**,public/stories/**'
 
       - name: Build XML Sitemap
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
