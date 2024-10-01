@@ -14,7 +14,7 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "firebase-functions": "^5.1.1"
+    "firebase-functions": "^6.0.1"
   },
   "devDependencies": {
     "@types/expect": "^24.3.0",
