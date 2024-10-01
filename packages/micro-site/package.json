@@ -22,7 +22,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "luxon": "^3.5.0"
   },
   "peerDependencies": {
