@@ -19,13 +19,13 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v3.0.2
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v3.0.2
         with:
           ref: main
           lfs: true
 
       - name: Setup Node
-        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v3.2.0
+        uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm

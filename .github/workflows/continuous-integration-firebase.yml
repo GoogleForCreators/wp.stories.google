@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v3.0.2
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v3.0.2
         with:
           ref: main
           lfs: true
@@ -25,7 +25,7 @@ jobs:
         run: git lfs checkout
 
       - name: Setup Node
-        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v3.2.0
+        uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -40,7 +40,7 @@ jobs:
         run: cd packages/functions && npm run test test/**.test.ts
 
       - name: Authenticate
-        uses: google-github-actions/auth@62cf5bd3e4211a0a0b51f2c6d6a37129d828611d
+        uses: google-github-actions/auth@8254fb75a33b976a221574d287e93919e6a36f70
         with:
           credentials_json: ${{ secrets.FIREBASE_SA_KEY }}
 
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@536cbdf0bcca21f8511f3bd536028924842e5d93 # v13.16.0
+        uses: w9jds/firebase-action@ba835df8a8f1cc39e7e7ced3afad58bce73328d5 # v13.20.2
         with:
           args: deploy
         env:
