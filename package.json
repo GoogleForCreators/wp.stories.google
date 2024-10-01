@@ -24,7 +24,7 @@
     "eslint-plugin-jsdoc": "^50.2.2",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.9.0",
+    "globals": "^15.10.0",
     "prettier": "^3.3.3"
   },
   "scripts": {
