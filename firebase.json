@@ -55,7 +55,7 @@
     "rewrites": [
       {
         "source": "/static/**/*",
-        "function": "handleCdnRequests"
+        "function": "handleCdnRequestsV2"
       }
     ]
   },

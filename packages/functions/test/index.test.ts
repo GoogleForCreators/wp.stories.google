@@ -16,7 +16,10 @@
 
 const assert = require('assert');
 
-const { handleCdnRequests, BUCKET_URL } = require('../src/index');
+const {
+  handleCdnRequestsV2: handleCdnRequests,
+  BUCKET_URL,
+} = require('../src/index');
 
 describe('handleCdnRequests', () => {
   afterEach(() => {

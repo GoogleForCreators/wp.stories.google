@@ -30,7 +30,7 @@ export const BUCKET_URL = `https://storage.googleapis.com/${BUCKET_NAME}`;
  * Redirects them to the GCP bucket for the latest version,
  * which is set via the .env file.
  */
-export const handleCdnRequests = onRequest({
+export const handleCdnRequestsV2 = onRequest({
     minInstances: 1,
   }, (request: express.Request, response: express.Response) => {
     info('Serving for requested path', request.path);
