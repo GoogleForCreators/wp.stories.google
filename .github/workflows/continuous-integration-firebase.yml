@@ -71,7 +71,8 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@ba835df8a8f1cc39e7e7ced3afad58bce73328d5 # v13.20.2
         with:
-          args: deploy
+          # --force is required because we're using minInstances=1.
+          args: deploy --force
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_SA_KEY }}
           PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
