@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-import * as functions from 'firebase-functions';
+import * as express from 'express';
+
+const {onRequest} = require("firebase-functions/https");
+const {info} = require("firebase-functions/logger");
 
 // Use global variables to reuse objects in future invocations
 // See https://firebase.google.com/docs/functions/tips#use_global_variables_to_reuse_objects_in_future_invocations
@@ -27,12 +30,10 @@ export const BUCKET_URL = `https://storage.googleapis.com/${BUCKET_NAME}`;
  * Redirects them to the GCP bucket for the latest version,
  * which is set via the .env file.
  */
-export const handleCdnRequests = functions
-  .runWith({
+export const handleCdnRequests = onRequest({
     minInstances: 1,
-  })
-  .https.onRequest((request, response) => {
-    functions.logger.info('Serving for requested path', request.path);
+  }, (request: express.Request, response: express.Response) => {
+    info('Serving for requested path', request.path);
 
     // "/static/123/images/path/to/image.png" => "123", "images/path/to/image.png".
     const match = request.path.match(/static\/(main|\d+)\/(.+)/);
@@ -47,7 +48,7 @@ export const handleCdnRequests = functions
     if ('main' === version) {
       const latestVersion = process.env.LATEST_ASSETS_VERSION;
 
-      functions.logger.info('Latest version from .env file:', latestVersion);
+      info('Latest version from .env file:', latestVersion);
 
       if (latestVersion) {
         response.redirect(302, `${BUCKET_URL}/${latestVersion}/${fileName}`);
