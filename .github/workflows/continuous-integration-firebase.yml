@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v3.0.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v3.0.2
         with:
           ref: main
           lfs: true
@@ -25,7 +25,7 @@ jobs:
         run: git lfs checkout
 
       - name: Setup Node
-        uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v3.2.0
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -40,12 +40,12 @@ jobs:
         run: cd packages/functions && npm run test test/**.test.ts
 
       - name: Authenticate
-        uses: google-github-actions/auth@8254fb75a33b976a221574d287e93919e6a36f70
+        uses: google-github-actions/auth@6fc4af4b145ae7821d527454aa9bd537d1f2dc5f
         with:
           credentials_json: ${{ secrets.FIREBASE_SA_KEY }}
 
       - name: Setup Cloud SDK
-        uses: google-github-actions/setup-gcloud@f0990588f1e5b5af6827153b93673613abdc6ec7
+        uses: google-github-actions/setup-gcloud@6189d56e4096ee891640bb02ac264be376592d6a
         with:
           project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
 
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@ba835df8a8f1cc39e7e7ced3afad58bce73328d5 # v13.20.2
+        uses: w9jds/firebase-action@16a31350c871e0c99475e6cb8588ed8d502dd521 # v13.23.1
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
