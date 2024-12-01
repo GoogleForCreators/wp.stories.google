@@ -59,7 +59,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website
-        uses: calibreapp/image-actions@80b3ba2b30cc4d1935d24959841821cf324f23ab # latest main from July 2, 2024.
+        uses: calibreapp/image-actions@06b947f9bc52d0c23ceae9c59ba3294f0d5d7aad # latest main from July 2, 2024.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@16a31350c871e0c99475e6cb8588ed8d502dd521 # v13.23.1
+        uses: w9jds/firebase-action@818980820c18bcd6a2e3e4739c6fe174ce5b467f # v13.27.0
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
