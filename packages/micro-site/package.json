@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "luxon": "^3.5.0"
+    "luxon": "^3.6.1"
   },
   "peerDependencies": {
     "nunjucks": "^3"
