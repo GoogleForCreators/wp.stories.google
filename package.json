@@ -25,7 +25,7 @@
     "eslint-plugin-mocha": "^11.1.0",
     "eslint-plugin-prettier": "^5.5.1",
     "globals": "^16.2.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.6.2"
   },
   "scripts": {
     "lint:js": "eslint .",
