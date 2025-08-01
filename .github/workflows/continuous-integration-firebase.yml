@@ -40,12 +40,12 @@ jobs:
         run: cd packages/functions && npm run test test/**.test.ts
 
       - name: Authenticate
-        uses: google-github-actions/auth@ba79af03959ebeac9769e648f473a284504d9193
+        uses: google-github-actions/auth@b7593ed2efd1c1617e1b0254da33b86225adb2a5
         with:
           credentials_json: ${{ secrets.FIREBASE_SA_KEY }}
 
       - name: Setup Cloud SDK
-        uses: google-github-actions/setup-gcloud@77e7a554d41e2ee56fc945c52dfd3f33d12def9a
+        uses: google-github-actions/setup-gcloud@6a7c903a70c8625ed6700fa299f5ddb4ca6022e9
         with:
           project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
 
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@1990ec7c96fa6182718b4e2862c24a43ee5501d6 # v14.9.0
+        uses: w9jds/firebase-action@40afa03da8eaa87b7c28835f4d0676f83406fb5e # v14.11.2
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
