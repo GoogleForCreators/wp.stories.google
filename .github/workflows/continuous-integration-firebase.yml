@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v3.0.2
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v3.0.2
         with:
           ref: main
           lfs: true
@@ -45,7 +45,7 @@ jobs:
           credentials_json: ${{ secrets.FIREBASE_SA_KEY }}
 
       - name: Setup Cloud SDK
-        uses: google-github-actions/setup-gcloud@6a7c903a70c8625ed6700fa299f5ddb4ca6022e9
+        uses: google-github-actions/setup-gcloud@cb1e50a9932213ecece00a606661ae9ca44f3397
         with:
           project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
 
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@40afa03da8eaa87b7c28835f4d0676f83406fb5e # v14.11.2
+        uses: w9jds/firebase-action@42313df1c0c98b72ffd11f8c133b7d873bd42735 # v14.12.1
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
