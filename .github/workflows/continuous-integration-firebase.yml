@@ -25,7 +25,7 @@ jobs:
         run: git lfs checkout
 
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v3.2.0
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -40,12 +40,12 @@ jobs:
         run: cd packages/functions && npm run test test/**.test.ts
 
       - name: Authenticate
-        uses: google-github-actions/auth@b7593ed2efd1c1617e1b0254da33b86225adb2a5
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093
         with:
           credentials_json: ${{ secrets.FIREBASE_SA_KEY }}
 
       - name: Setup Cloud SDK
-        uses: google-github-actions/setup-gcloud@cb1e50a9932213ecece00a606661ae9ca44f3397
+        uses: google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db
         with:
           project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
 
@@ -59,7 +59,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website
-        uses: calibreapp/image-actions@006692e15ca7d6312e06cc49b57a466d8ed45848 # latest main from July 2, 2024.
+        uses: calibreapp/image-actions@105a5b2117a1f8f441b8ab5c0146d163076e3edf # latest main from July 2, 2024.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@42313df1c0c98b72ffd11f8c133b7d873bd42735 # v14.12.1
+        uses: w9jds/firebase-action@3c785bda8de4c8c36b3ce0dc930acadecdc896cb # v14.15.2
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
