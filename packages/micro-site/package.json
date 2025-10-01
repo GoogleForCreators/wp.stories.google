@@ -13,7 +13,7 @@
     "@ampproject/eleventy-plugin-amp": "^0.5.8",
     "clean-css": "^5.3.3",
     "csso": "^5.0.5",
-    "hasha": "^5.2.0",
+    "hasha": "^7.0.0",
     "html-minifier": "^4.0.0",
     "image-size": "^2.0.2",
     "jsdom": "^27.0.0",
