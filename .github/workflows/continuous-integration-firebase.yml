@@ -25,7 +25,7 @@ jobs:
         run: git lfs checkout
 
       - name: Setup Node
-        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v3.2.0
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v3.2.0
         with:
           node-version-file: '.nvmrc'
           cache: npm
@@ -59,7 +59,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website
-        uses: calibreapp/image-actions@18af99ce5f18839606d49ec8978d0f071e56d0f9 # latest main from July 2, 2024.
+        uses: calibreapp/image-actions@05b1cf44e88c3b041b841452482df9497f046ef7 # latest main from July 2, 2024.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@2b6efe0aa43feeba9e6b7fb7c2c89caac540d985 # v14.17.0
+        uses: w9jds/firebase-action@cfc7b6a8d77d914cad3c32517b866e3392c51ab1 # v14.23.0
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
