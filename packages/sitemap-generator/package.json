@@ -10,7 +10,7 @@
     "web-stories"
   ],
   "dependencies": {
-    "sitemap": "^8.0.2"
+    "sitemap": "^9.0.0"
   },
   "devDependencies": {}
 }
