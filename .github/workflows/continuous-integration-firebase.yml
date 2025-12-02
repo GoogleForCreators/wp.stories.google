@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v3.0.2
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v3.0.2
         with:
           ref: main
           lfs: true
@@ -59,7 +59,7 @@ jobs:
         run: cd packages/micro-site && npm run build
 
       - name: Compress images for website
-        uses: calibreapp/image-actions@05b1cf44e88c3b041b841452482df9497f046ef7 # latest main from July 2, 2024.
+        uses: calibreapp/image-actions@420075c115b26f8785e293c5bd5bef0911c506e5 # latest main from July 2, 2024.
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@cfc7b6a8d77d914cad3c32517b866e3392c51ab1 # v14.23.0
+        uses: w9jds/firebase-action@9e2bc1a898f88baacbefa231f0d3c61433544e7f # v14.26.0
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
