@@ -18,7 +18,7 @@
     "image-size": "^2.0.2",
     "jsdom": "^29.0.1",
     "purge-from-html": "^1.0.3",
-    "purgecss": "^7.0.2",
+    "purgecss": "^8.0.0",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
