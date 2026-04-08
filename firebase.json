@@ -1,10 +1,7 @@
 {
   "hosting": {
     "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*"
-    ],
+    "ignore": ["firebase.json", "**/.*"],
     "cleanUrls": true,
     "trailingSlash": true,
     "headers": [
@@ -61,9 +58,7 @@
   },
   "functions": {
     "source": "packages/functions",
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run build"
-    ]
+    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"]
   },
   "emulators": {
     "functions": {

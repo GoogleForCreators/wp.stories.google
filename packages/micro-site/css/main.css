@@ -1,26 +1,34 @@
 @font-face {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-display: fallback;
   font-weight: 200;
-  src: local('Poppins'), local('Poppins'), url('/fonts/Poppins.woff2') format('woff2');
+  src:
+    local('Poppins'),
+    local('Poppins'),
+    url('/fonts/Poppins.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Poppins-ExtraLight";
+  font-family: 'Poppins-ExtraLight';
   font-style: normal;
   font-display: fallback;
   font-weight: 200;
-  src: local('Poppins-ExtraLight'), local('Poppins-ExtraLight'), url('/fonts/Poppins-ExtraLight.woff2') format('woff2');
+  src:
+    local('Poppins-ExtraLight'),
+    local('Poppins-ExtraLight'),
+    url('/fonts/Poppins-ExtraLight.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-display: fallback;
-  src: local('Roboto'), local('Roboto'), url('/fonts/Roboto.woff2') format('woff2');
+  src:
+    local('Roboto'),
+    local('Roboto'),
+    url('/fonts/Roboto.woff2') format('woff2');
 }
-
 
 .visuallyhidden {
   border: 0;
@@ -34,12 +42,14 @@
 }
 
 html {
-  font-family: "Poppins", "Segoe UI",  "Helvetica Neue", Roboto, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 
-header, footer, section {
+header,
+footer,
+section {
   width: 88%;
   margin: auto;
   max-width: 1920px;
@@ -61,11 +71,14 @@ header {
   padding: 2rem 6%;
 }
 
-header, footer, .docs {
+header,
+footer,
+.docs {
   font-family: Roboto, sans-serif;
 }
 
-header, footer {
+header,
+footer {
   display: flex;
   align-items: center;
   line-height: 2.5;
@@ -73,7 +86,8 @@ header, footer {
 }
 
 @media screen and (min-width: 768px) {
-  header, footer {
+  header,
+  footer {
     flex-direction: row;
   }
 }
@@ -114,7 +128,7 @@ header .links a {
 }
 
 header .links a {
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -127,12 +141,13 @@ header .links a {
 #docs_menu > span > li a:focus,
 header nav a:focus,
 header nav a:hover {
-  color: #93bcf9
+  color: #93bcf9;
 }
 
 header nav button:focus,
 header nav button:hover {
-  filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(2461%) hue-rotate(186deg) brightness(101%) contrast(95%);
+  filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(2461%)
+    hue-rotate(186deg) brightness(101%) contrast(95%);
 }
 
 header nav a:focus-visible,
@@ -153,19 +168,19 @@ header nav .current > a {
     content: '';
     background: #666;
     transition: all 0.5s ease-in-out;
-    vertical-align: middle
+    vertical-align: middle;
   }
 
   footer li:last-child:after,
   header li:last-child:after {
-    display: none
+    display: none;
   }
 }
 
 footer {
   position: relative;
   z-index: 3;
-  padding: 2rem 6%
+  padding: 2rem 6%;
 }
 
 nav {
@@ -176,7 +191,7 @@ nav {
 }
 
 ul {
-  list-style: none
+  list-style: none;
 }
 
 .logo_link {
@@ -187,19 +202,17 @@ ul {
 }
 
 .logo_link ~ a {
-  line-height: 1.5
+  line-height: 1.5;
 }
-
 
 .logo_link:focus-visible {
   outline: #fff solid 1px;
-
 }
 
 .fake_button {
   color: #000;
-  background-color: #CBACFF;
-  border: 1px solid #CBACFF;
+  background-color: #cbacff;
+  border: 1px solid #cbacff;
   border-radius: 10rem;
   margin: 0 1rem;
   transition: all 0.25s ease-in-out;
@@ -207,12 +220,12 @@ ul {
   user-select: none;
   text-decoration: none;
   padding: 0 1rem;
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 .home .fake_button:hover,
 .home .fake_button:focus {
-  color: #FFF;
+  color: #fff;
 }
 
 .fake_button:hover,
@@ -228,7 +241,7 @@ header .toggle {
   background: transparent;
   border: 0;
   outline: 0;
-  margin: 0 1rem 0 -.5rem;
+  margin: 0 1rem 0 -0.5rem;
   cursor: pointer;
 }
 
@@ -243,10 +256,10 @@ header .fake_button {
 }
 
 header .toggle:active {
-  outline: 0
+  outline: 0;
 }
 
-.toggle svg{
+.toggle svg {
   transition: transform 0.2s ease-out;
 }
 
@@ -258,7 +271,9 @@ header .toggle:active {
 header .docs_flyout {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.2s, visibility 0s ease-out;
+  transition:
+    opacity 0.2s,
+    visibility 0s ease-out;
   grid-template-columns: 1fr 1fr 1fr;
   position: absolute;
   background: white;
@@ -273,10 +288,12 @@ header .docs_flyout {
 
 /* purgecss ignore */
 header .active ~ .docs_flyout {
-  transition: opacity 0.2s, visibility 0s 0.3s ease-out;
+  transition:
+    opacity 0.2s,
+    visibility 0s 0.3s ease-out;
   display: flex;
   visibility: visible;
-  opacity: 1
+  opacity: 1;
 }
 
 .docs_flyout {
@@ -315,7 +332,7 @@ aside .docs_flyout.docs_page span > li {
 }
 
 #best_practices_menu {
-  padding-bottom: 2rem
+  padding-bottom: 2rem;
 }
 
 aside {
@@ -335,7 +352,9 @@ aside a {
 
 main a {
   color: #9464e1;
-  transition: color 0.25s linear 0s, stroke 0.25s linear 0s;
+  transition:
+    color 0.25s linear 0s,
+    stroke 0.25s linear 0s;
 }
 
 main a:hover {
@@ -362,7 +381,7 @@ table {
 
 table caption {
   font-size: 1.5em;
-  margin: .5em 0 .75em;
+  margin: 0.5em 0 0.75em;
 }
 
 table tr {
@@ -450,11 +469,11 @@ aside .docTrack i {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0
+  top: 0;
 }
 
 aside .docTrack i:first-child {
-  background: rgba(203, 172, 255, 0.3)
+  background: rgba(203, 172, 255, 0.3);
 }
 
 aside .docTrack i:last-child {
@@ -462,11 +481,10 @@ aside .docTrack i:last-child {
   clip-path: inset(0 0 100% 0);
 }
 
-
 .home {
   text-align: center;
   background-color: #000;
-  color: #FFF;
+  color: #fff;
 }
 
 .home footer,
@@ -476,7 +494,7 @@ aside .docTrack i:last-child {
 
 .home footer a,
 .home header a {
-  color: #fff
+  color: #fff;
 }
 
 #docs_menu li {
@@ -506,16 +524,14 @@ aside #docs_menu.docs_page li {
   display: inline-block;
 }
 
-
 .home .logo_link {
   filter: none;
 }
 
-
 /* HERO */
 
 #hero_text {
-  font-family: "Poppins-ExtraLight";
+  font-family: 'Poppins-ExtraLight';
   font-size: 5.5rem;
   text-align: center;
   font-weight: 200;
@@ -536,17 +552,17 @@ aside #docs_menu.docs_page li {
 
 .home .fake_button {
   background-color: transparent;
-  color: #CBACFF;
+  color: #cbacff;
   display: inline-block;
 }
 
 .home section .fake_button {
   margin: 2.5rem auto;
   padding: 1rem 2rem;
-  background: #CBACFF;
+  background: #cbacff;
   color: #000;
   font-size: 1.5rem;
-  font-weight: bolder
+  font-weight: bolder;
 }
 
 .fake_button:hover,
@@ -571,7 +587,7 @@ aside #docs_menu.docs_page li {
 
 #editor_bg::before {
   display: block;
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   right: 0;
@@ -582,7 +598,7 @@ aside #docs_menu.docs_page li {
 }
 
 #templates_screenshot {
-  background-image: url("/img/template_gallery.jpg");
+  background-image: url('/img/template_gallery.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -602,13 +618,13 @@ aside #docs_menu.docs_page li {
 
 @keyframes rotateIn {
   from {
-      transform: rotate(-15deg) translate(100px, 0px);
-      opacity: 0;
+    transform: rotate(-15deg) translate(100px, 0px);
+    opacity: 0;
   }
 
   to {
-      transform: rotate(-9.6deg);
-      opacity: 1;
+    transform: rotate(-9.6deg);
+    opacity: 1;
   }
 }
 
@@ -646,12 +662,12 @@ aside #docs_menu.docs_page li {
 
 #template_1 {
   width: 12vw;
-  height: 21.4vw
+  height: 21.4vw;
 }
 
 #template_2 {
   width: 7.8vw;
-  height: 13.9vw
+  height: 13.9vw;
 }
 
 #template_3 {
@@ -661,27 +677,27 @@ aside #docs_menu.docs_page li {
 
 #template_4 {
   width: 20vw;
-  height: 35.7vw
+  height: 35.7vw;
 }
 
 #template_5 {
   width: 9.4vw;
-  height: 16.8vw
+  height: 16.8vw;
 }
 
 #template_6 {
   width: 9.4vw;
-  height: 16.8vw
+  height: 16.8vw;
 }
 
 #template_7 {
   width: 7.1vw;
-  height: 12.7vw
+  height: 12.7vw;
 }
 
 #template_8 {
   width: 7.1vw;
-  height: 12.7vw
+  height: 12.7vw;
 }
 
 #final_thoughts {
@@ -732,7 +748,8 @@ aside #docs_menu.docs_page li {
   display: inline-block;
 }
 
-#tip_card, #tip_card_bg {
+#tip_card,
+#tip_card_bg {
   border-radius: 20px;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -744,9 +761,8 @@ aside #docs_menu.docs_page li {
   z-index: 2;
 }
 
-
 #tip_card_bg {
-  background: #CBACFF;
+  background: #cbacff;
   z-index: 1;
   position: absolute;
   top: 0;
@@ -754,7 +770,7 @@ aside #docs_menu.docs_page li {
 }
 
 .docs header {
-  background: #fff
+  background: #fff;
 }
 
 .docs main {
@@ -766,7 +782,7 @@ aside #docs_menu.docs_page li {
 .docs h1,
 .docs h2,
 .docs h3 {
-  font-family: "Poppins", "Segoe UI",  "Helvetica Neue", Roboto, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', Roboto, sans-serif;
 }
 
 .docs main h1 {
@@ -810,19 +826,19 @@ aside #docs_menu.docs_page li {
 .docs ol {
   line-height: 1.56;
   max-width: 90%;
-  color: rgba(0,0,0,0.84);
+  color: rgba(0, 0, 0, 0.84);
 }
 
 .docs amp-img {
-  margin: 1rem 0 2rem
+  margin: 1rem 0 2rem;
 }
 
 .docs .img-wrap {
-  text-align: center
+  text-align: center;
 }
 
 .real-ul {
-  list-style: disc
+  list-style: disc;
 }
 
 footer .social_links {
@@ -840,9 +856,10 @@ footer .social_links.links li:after {
   display: none;
 }
 
-#final_thoughts, #template_list {
+#final_thoughts,
+#template_list {
   padding: 0 6%;
-  background: black
+  background: black;
 }
 
 .social {
@@ -885,7 +902,7 @@ footer .social_links.links li:after {
 
 @media screen and (max-width: 1280px) {
   html {
-    font-size: 16px
+    font-size: 16px;
   }
 
   #templates_screenshot {
@@ -894,7 +911,7 @@ footer .social_links.links li:after {
 
   #announcing {
     width: 90%;
-    font-size: 2.75rem
+    font-size: 2.75rem;
   }
 
   .editor {
@@ -906,7 +923,7 @@ footer .social_links.links li:after {
   }
 
   #hero_text {
-    font-size: 3.6rem
+    font-size: 3.6rem;
   }
 
   .hero_subtitle {
@@ -921,11 +938,9 @@ footer .social_links.links li:after {
 
   #final_thoughts > div {
     flex: 0.45;
-    height: min-content
+    height: min-content;
   }
-
 }
-
 
 @media screen and (max-width: 1000px) {
   #templates_screenshot {
@@ -933,7 +948,7 @@ footer .social_links.links li:after {
   }
 
   header .links ~ .fake_button {
-    display: none
+    display: none;
   }
 
   .docs aside {
@@ -941,7 +956,7 @@ footer .social_links.links li:after {
   }
 
   .docs main {
-    margin-left: 0
+    margin-left: 0;
   }
 }
 
@@ -952,7 +967,7 @@ footer .social_links.links li:after {
 
   #final_thoughts h1 {
     font-size: 1.8rem;
-    line-height: 1.4em
+    line-height: 1.4em;
   }
 
   #final_thoughts p {
@@ -965,12 +980,12 @@ footer .social_links.links li:after {
   }
 
   #final_thoughts > div {
-    margin: 5rem 0
+    margin: 5rem 0;
   }
 
   #final_thoughts > #tip_card_container {
     width: 50%;
-    margin: auto
+    margin: auto;
   }
 }
 
@@ -980,14 +995,29 @@ footer .social_links.links li:after {
   }
 }
 
-
 @keyframes peekaboo {
   from {
-    clippath: polygon(20px 0, 100% 0, 100% 1.75rem, 20px 1.75rem, 0 1.75rem, 0 1.75rem, 20px 1.75rem);
-    transform: rotate(0deg)
+    clippath: polygon(
+      20px 0,
+      100% 0,
+      100% 1.75rem,
+      20px 1.75rem,
+      0 1.75rem,
+      0 1.75rem,
+      20px 1.75rem
+    );
+    transform: rotate(0deg);
   }
   to {
-    clippath: polygon(20px 0, 100% 0, 100% 1.75rem, 20px 1.75rem, 0 1.75rem, 0 0, 20px 0);
-   transform: rotate(360deg)
+    clippath: polygon(
+      20px 0,
+      100% 0,
+      100% 1.75rem,
+      20px 1.75rem,
+      0 1.75rem,
+      0 0,
+      20px 0
+    );
+    transform: rotate(360deg);
   }
 }
