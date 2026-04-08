@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-const assert = require('assert');
+import assert from 'assert';
 
-const {
-  handleCdnRequestsV2: handleCdnRequests,
+import {
+  handleCdnRequestsV2 as handleCdnRequests,
   BUCKET_URL,
-} = require('../src/index');
+} from '../src/index.ts';
 
 describe('handleCdnRequests', () => {
   afterEach(() => {

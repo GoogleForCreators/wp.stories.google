@@ -16,8 +16,8 @@
 
 import * as express from 'express';
 
-const {onRequest} = require("firebase-functions/https");
-const {info} = require("firebase-functions/logger");
+import { onRequest } from 'firebase-functions/https';
+import { info } from 'firebase-functions/logger';
 
 // Use global variables to reuse objects in future invocations
 // See https://firebase.google.com/docs/functions/tips#use_global_variables_to_reuse_objects_in_future_invocations
