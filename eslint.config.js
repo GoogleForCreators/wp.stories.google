@@ -28,7 +28,7 @@ export default [
   },
   ...compat.extends(
     'eslint:recommended',
-    'plugin:eslint-comments/recommended',
+    'plugin:@eslint-community/eslint-comments/recommended',
     'plugin:prettier/recommended'
   ),
   {
@@ -123,7 +123,7 @@ export default [
 
       'jsdoc/require-returns': 'warn',
       'jsdoc/require-param-description': 'warn',
-      'eslint-comments/no-unused-disable': 'error',
+      '@eslint-community/eslint-comments/no-unused-disable': 'error',
     },
   },
   {
