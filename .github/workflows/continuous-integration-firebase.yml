@@ -69,7 +69,7 @@ jobs:
         run: node ./packages/sitemap-generator/index.js ./public/sitemap.xml
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@8a18efb2be6c1e4afc64dc595f99b331bc131ce0 # v15.12.0
+        uses: w9jds/firebase-action@587b468aacd6ff963cca9e87ae89de959d29dc46 # v15.13.0
         with:
           # --force is required because we're using minInstances=1.
           args: deploy --force
