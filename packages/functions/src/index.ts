@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-import * as express from 'express';
-
 import { onRequest } from 'firebase-functions/https';
 import { info } from 'firebase-functions/logger';
 
@@ -34,7 +32,7 @@ export const handleCdnRequestsV2 = onRequest(
   {
     minInstances: 1,
   },
-  (request: express.Request, response: express.Response) => {
+  (request, response) => {
     info('Serving for requested path', request.path);
 
     // "/static/123/images/path/to/image.png" => "123", "images/path/to/image.png".
