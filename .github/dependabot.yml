@@ -5,6 +5,8 @@ updates:
     schedule:
       interval: quarterly
     open-pull-requests-limit: 10
+    cooldown:
+      default-days: 7
     groups:
       github-actions:
         patterns:
@@ -15,9 +17,27 @@ updates:
     schedule:
       interval: quarterly
     open-pull-requests-limit: 10
+    cooldown:
+      default-days: 7
     groups:
       eslint:
         patterns:
           - '@typescript-eslint/*'
           - '@eslint/*'
+          - '@eslint-community/*'
           - 'eslint'
+          - 'eslint-*'
+          - 'prettier'
+      minor-and-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
