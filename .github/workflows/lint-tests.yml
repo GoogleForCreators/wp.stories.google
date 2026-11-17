@@ -21,7 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: main
           lfs: true
           persist-credentials: false
 
@@ -39,6 +38,9 @@ jobs:
 
       - name: Lint
         run: npm run lint:js
+
+      - name: Build website
+        run: cd packages/micro-site && npm run build
 
       - name: Test Firebase Function
         run: cd packages/functions && npm run test test/**.test.ts
