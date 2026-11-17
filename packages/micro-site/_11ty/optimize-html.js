@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-const minify = require('html-minifier').minify;
-const PurgeCSS = require('purgecss').PurgeCSS;
+const { PurgeCSS } = require('purgecss');
 const csso = require('csso');
 
 /**
@@ -74,17 +73,17 @@ const purifyCss = async (rawContent, outputPath) => {
   return content;
 };
 
-const minifyHtml = (rawContent, outputPath) => {
+const minifyHtml = async (rawContent, outputPath) => {
   let content = rawContent;
   if (outputPath && outputPath.endsWith('.html') && !isAmp(content)) {
-    content = minify(content, {
+    const { minify } = await import('html-minifier');
+    content = await minify(content, {
       removeAttributeQuotes: true,
       collapseBooleanAttributes: true,
       collapseWhitespace: true,
       removeComments: true,
-      sortClassName: true,
+      sortClassNames: true,
       sortAttributes: true,
-      html5: true,
       decodeEntities: true,
       removeOptionalTags: true,
     });
